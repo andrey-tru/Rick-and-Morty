@@ -15,7 +15,7 @@ class LocationPreview extends StatelessWidget {
           scale: 1,
           child: AspectRatio(
             aspectRatio: 1.35,
-            child: Image.asset(
+            child: Image.network(
               avatar,
               fit: BoxFit.cover,
             ),

@@ -293,10 +293,10 @@ class _$PersonagesStateTearOff {
   const _$PersonagesStateTearOff();
 
 // ignore: unused_element
-  _DataPersonagesState data(
-      {@required List<PersonageModel> personageList, @required bool isGrid}) {
-    return _DataPersonagesState(
-      personageList: personageList,
+  DataPersonagesState data(
+      {@required List<Personage> personagesList, @required bool isGrid}) {
+    return DataPersonagesState(
+      personagesList: personagesList,
       isGrid: isGrid,
     );
   }
@@ -309,11 +309,6 @@ class _$PersonagesStateTearOff {
 // ignore: unused_element
   _LoadingPersonagesState loading() {
     return const _LoadingPersonagesState();
-  }
-
-// ignore: unused_element
-  _LoadingSuccessPersonagesState loadingSuccess() {
-    return const _LoadingSuccessPersonagesState();
   }
 
 // ignore: unused_element
@@ -332,35 +327,31 @@ const $PersonagesState = _$PersonagesStateTearOff();
 mixin _$PersonagesState {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<PersonageModel> personageList, bool isGrid),
+    @required TResult data(List<Personage> personagesList, bool isGrid),
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult loadingSuccess(),
     @required TResult failing(String message),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<PersonageModel> personageList, bool isGrid),
+    TResult data(List<Personage> personagesList, bool isGrid),
     TResult initial(),
     TResult loading(),
-    TResult loadingSuccess(),
     TResult failing(String message),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult data(_DataPersonagesState value),
+    @required TResult data(DataPersonagesState value),
     @required TResult initial(_InitialPersonagesState value),
     @required TResult loading(_LoadingPersonagesState value),
-    @required TResult loadingSuccess(_LoadingSuccessPersonagesState value),
     @required TResult failing(_FailingPersonagesState value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult data(_DataPersonagesState value),
+    TResult data(DataPersonagesState value),
     TResult initial(_InitialPersonagesState value),
     TResult loading(_LoadingPersonagesState value),
-    TResult loadingSuccess(_LoadingSuccessPersonagesState value),
     TResult failing(_FailingPersonagesState value),
     @required TResult orElse(),
   });
@@ -384,62 +375,62 @@ class _$PersonagesStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$DataPersonagesStateCopyWith<$Res> {
-  factory _$DataPersonagesStateCopyWith(_DataPersonagesState value,
-          $Res Function(_DataPersonagesState) then) =
-      __$DataPersonagesStateCopyWithImpl<$Res>;
-  $Res call({List<PersonageModel> personageList, bool isGrid});
+abstract class $DataPersonagesStateCopyWith<$Res> {
+  factory $DataPersonagesStateCopyWith(
+          DataPersonagesState value, $Res Function(DataPersonagesState) then) =
+      _$DataPersonagesStateCopyWithImpl<$Res>;
+  $Res call({List<Personage> personagesList, bool isGrid});
 }
 
 /// @nodoc
-class __$DataPersonagesStateCopyWithImpl<$Res>
+class _$DataPersonagesStateCopyWithImpl<$Res>
     extends _$PersonagesStateCopyWithImpl<$Res>
-    implements _$DataPersonagesStateCopyWith<$Res> {
-  __$DataPersonagesStateCopyWithImpl(
-      _DataPersonagesState _value, $Res Function(_DataPersonagesState) _then)
-      : super(_value, (v) => _then(v as _DataPersonagesState));
+    implements $DataPersonagesStateCopyWith<$Res> {
+  _$DataPersonagesStateCopyWithImpl(
+      DataPersonagesState _value, $Res Function(DataPersonagesState) _then)
+      : super(_value, (v) => _then(v as DataPersonagesState));
 
   @override
-  _DataPersonagesState get _value => super._value as _DataPersonagesState;
+  DataPersonagesState get _value => super._value as DataPersonagesState;
 
   @override
   $Res call({
-    Object personageList = freezed,
+    Object personagesList = freezed,
     Object isGrid = freezed,
   }) {
-    return _then(_DataPersonagesState(
-      personageList: personageList == freezed
-          ? _value.personageList
-          : personageList as List<PersonageModel>,
+    return _then(DataPersonagesState(
+      personagesList: personagesList == freezed
+          ? _value.personagesList
+          : personagesList as List<Personage>,
       isGrid: isGrid == freezed ? _value.isGrid : isGrid as bool,
     ));
   }
 }
 
 /// @nodoc
-class _$_DataPersonagesState implements _DataPersonagesState {
-  const _$_DataPersonagesState(
-      {@required this.personageList, @required this.isGrid})
-      : assert(personageList != null),
+class _$DataPersonagesState implements DataPersonagesState {
+  const _$DataPersonagesState(
+      {@required this.personagesList, @required this.isGrid})
+      : assert(personagesList != null),
         assert(isGrid != null);
 
   @override
-  final List<PersonageModel> personageList;
+  final List<Personage> personagesList;
   @override
   final bool isGrid;
 
   @override
   String toString() {
-    return 'PersonagesState.data(personageList: $personageList, isGrid: $isGrid)';
+    return 'PersonagesState.data(personagesList: $personagesList, isGrid: $isGrid)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _DataPersonagesState &&
-            (identical(other.personageList, personageList) ||
+        (other is DataPersonagesState &&
+            (identical(other.personagesList, personagesList) ||
                 const DeepCollectionEquality()
-                    .equals(other.personageList, personageList)) &&
+                    .equals(other.personagesList, personagesList)) &&
             (identical(other.isGrid, isGrid) ||
                 const DeepCollectionEquality().equals(other.isGrid, isGrid)));
   }
@@ -447,45 +438,41 @@ class _$_DataPersonagesState implements _DataPersonagesState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(personageList) ^
+      const DeepCollectionEquality().hash(personagesList) ^
       const DeepCollectionEquality().hash(isGrid);
 
   @JsonKey(ignore: true)
   @override
-  _$DataPersonagesStateCopyWith<_DataPersonagesState> get copyWith =>
-      __$DataPersonagesStateCopyWithImpl<_DataPersonagesState>(
-          this, _$identity);
+  $DataPersonagesStateCopyWith<DataPersonagesState> get copyWith =>
+      _$DataPersonagesStateCopyWithImpl<DataPersonagesState>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<PersonageModel> personageList, bool isGrid),
+    @required TResult data(List<Personage> personagesList, bool isGrid),
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult loadingSuccess(),
     @required TResult failing(String message),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
-    return data(personageList, isGrid);
+    return data(personagesList, isGrid);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<PersonageModel> personageList, bool isGrid),
+    TResult data(List<Personage> personagesList, bool isGrid),
     TResult initial(),
     TResult loading(),
-    TResult loadingSuccess(),
     TResult failing(String message),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (data != null) {
-      return data(personageList, isGrid);
+      return data(personagesList, isGrid);
     }
     return orElse();
   }
@@ -493,16 +480,14 @@ class _$_DataPersonagesState implements _DataPersonagesState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult data(_DataPersonagesState value),
+    @required TResult data(DataPersonagesState value),
     @required TResult initial(_InitialPersonagesState value),
     @required TResult loading(_LoadingPersonagesState value),
-    @required TResult loadingSuccess(_LoadingSuccessPersonagesState value),
     @required TResult failing(_FailingPersonagesState value),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return data(this);
   }
@@ -510,10 +495,9 @@ class _$_DataPersonagesState implements _DataPersonagesState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult data(_DataPersonagesState value),
+    TResult data(DataPersonagesState value),
     TResult initial(_InitialPersonagesState value),
     TResult loading(_LoadingPersonagesState value),
-    TResult loadingSuccess(_LoadingSuccessPersonagesState value),
     TResult failing(_FailingPersonagesState value),
     @required TResult orElse(),
   }) {
@@ -525,15 +509,15 @@ class _$_DataPersonagesState implements _DataPersonagesState {
   }
 }
 
-abstract class _DataPersonagesState implements PersonagesState {
-  const factory _DataPersonagesState(
-      {@required List<PersonageModel> personageList,
-      @required bool isGrid}) = _$_DataPersonagesState;
+abstract class DataPersonagesState implements PersonagesState {
+  const factory DataPersonagesState(
+      {@required List<Personage> personagesList,
+      @required bool isGrid}) = _$DataPersonagesState;
 
-  List<PersonageModel> get personageList;
+  List<Personage> get personagesList;
   bool get isGrid;
   @JsonKey(ignore: true)
-  _$DataPersonagesStateCopyWith<_DataPersonagesState> get copyWith;
+  $DataPersonagesStateCopyWith<DataPersonagesState> get copyWith;
 }
 
 /// @nodoc
@@ -575,16 +559,14 @@ class _$_InitialPersonagesState implements _InitialPersonagesState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<PersonageModel> personageList, bool isGrid),
+    @required TResult data(List<Personage> personagesList, bool isGrid),
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult loadingSuccess(),
     @required TResult failing(String message),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return initial();
   }
@@ -592,10 +574,9 @@ class _$_InitialPersonagesState implements _InitialPersonagesState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<PersonageModel> personageList, bool isGrid),
+    TResult data(List<Personage> personagesList, bool isGrid),
     TResult initial(),
     TResult loading(),
-    TResult loadingSuccess(),
     TResult failing(String message),
     @required TResult orElse(),
   }) {
@@ -609,16 +590,14 @@ class _$_InitialPersonagesState implements _InitialPersonagesState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult data(_DataPersonagesState value),
+    @required TResult data(DataPersonagesState value),
     @required TResult initial(_InitialPersonagesState value),
     @required TResult loading(_LoadingPersonagesState value),
-    @required TResult loadingSuccess(_LoadingSuccessPersonagesState value),
     @required TResult failing(_FailingPersonagesState value),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return initial(this);
   }
@@ -626,10 +605,9 @@ class _$_InitialPersonagesState implements _InitialPersonagesState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult data(_DataPersonagesState value),
+    TResult data(DataPersonagesState value),
     TResult initial(_InitialPersonagesState value),
     TResult loading(_LoadingPersonagesState value),
-    TResult loadingSuccess(_LoadingSuccessPersonagesState value),
     TResult failing(_FailingPersonagesState value),
     @required TResult orElse(),
   }) {
@@ -684,16 +662,14 @@ class _$_LoadingPersonagesState implements _LoadingPersonagesState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<PersonageModel> personageList, bool isGrid),
+    @required TResult data(List<Personage> personagesList, bool isGrid),
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult loadingSuccess(),
     @required TResult failing(String message),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return loading();
   }
@@ -701,10 +677,9 @@ class _$_LoadingPersonagesState implements _LoadingPersonagesState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<PersonageModel> personageList, bool isGrid),
+    TResult data(List<Personage> personagesList, bool isGrid),
     TResult initial(),
     TResult loading(),
-    TResult loadingSuccess(),
     TResult failing(String message),
     @required TResult orElse(),
   }) {
@@ -718,16 +693,14 @@ class _$_LoadingPersonagesState implements _LoadingPersonagesState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult data(_DataPersonagesState value),
+    @required TResult data(DataPersonagesState value),
     @required TResult initial(_InitialPersonagesState value),
     @required TResult loading(_LoadingPersonagesState value),
-    @required TResult loadingSuccess(_LoadingSuccessPersonagesState value),
     @required TResult failing(_FailingPersonagesState value),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return loading(this);
   }
@@ -735,10 +708,9 @@ class _$_LoadingPersonagesState implements _LoadingPersonagesState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult data(_DataPersonagesState value),
+    TResult data(DataPersonagesState value),
     TResult initial(_InitialPersonagesState value),
     TResult loading(_LoadingPersonagesState value),
-    TResult loadingSuccess(_LoadingSuccessPersonagesState value),
     TResult failing(_FailingPersonagesState value),
     @required TResult orElse(),
   }) {
@@ -752,120 +724,6 @@ class _$_LoadingPersonagesState implements _LoadingPersonagesState {
 
 abstract class _LoadingPersonagesState implements PersonagesState {
   const factory _LoadingPersonagesState() = _$_LoadingPersonagesState;
-}
-
-/// @nodoc
-abstract class _$LoadingSuccessPersonagesStateCopyWith<$Res> {
-  factory _$LoadingSuccessPersonagesStateCopyWith(
-          _LoadingSuccessPersonagesState value,
-          $Res Function(_LoadingSuccessPersonagesState) then) =
-      __$LoadingSuccessPersonagesStateCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$LoadingSuccessPersonagesStateCopyWithImpl<$Res>
-    extends _$PersonagesStateCopyWithImpl<$Res>
-    implements _$LoadingSuccessPersonagesStateCopyWith<$Res> {
-  __$LoadingSuccessPersonagesStateCopyWithImpl(
-      _LoadingSuccessPersonagesState _value,
-      $Res Function(_LoadingSuccessPersonagesState) _then)
-      : super(_value, (v) => _then(v as _LoadingSuccessPersonagesState));
-
-  @override
-  _LoadingSuccessPersonagesState get _value =>
-      super._value as _LoadingSuccessPersonagesState;
-}
-
-/// @nodoc
-class _$_LoadingSuccessPersonagesState
-    implements _LoadingSuccessPersonagesState {
-  const _$_LoadingSuccessPersonagesState();
-
-  @override
-  String toString() {
-    return 'PersonagesState.loadingSuccess()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _LoadingSuccessPersonagesState);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult data(List<PersonageModel> personageList, bool isGrid),
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult loadingSuccess(),
-    @required TResult failing(String message),
-  }) {
-    assert(data != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(loadingSuccess != null);
-    assert(failing != null);
-    return loadingSuccess();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult data(List<PersonageModel> personageList, bool isGrid),
-    TResult initial(),
-    TResult loading(),
-    TResult loadingSuccess(),
-    TResult failing(String message),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (loadingSuccess != null) {
-      return loadingSuccess();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult data(_DataPersonagesState value),
-    @required TResult initial(_InitialPersonagesState value),
-    @required TResult loading(_LoadingPersonagesState value),
-    @required TResult loadingSuccess(_LoadingSuccessPersonagesState value),
-    @required TResult failing(_FailingPersonagesState value),
-  }) {
-    assert(data != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(loadingSuccess != null);
-    assert(failing != null);
-    return loadingSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult data(_DataPersonagesState value),
-    TResult initial(_InitialPersonagesState value),
-    TResult loading(_LoadingPersonagesState value),
-    TResult loadingSuccess(_LoadingSuccessPersonagesState value),
-    TResult failing(_FailingPersonagesState value),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (loadingSuccess != null) {
-      return loadingSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LoadingSuccessPersonagesState implements PersonagesState {
-  const factory _LoadingSuccessPersonagesState() =
-      _$_LoadingSuccessPersonagesState;
 }
 
 /// @nodoc
@@ -931,16 +789,14 @@ class _$_FailingPersonagesState implements _FailingPersonagesState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<PersonageModel> personageList, bool isGrid),
+    @required TResult data(List<Personage> personagesList, bool isGrid),
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult loadingSuccess(),
     @required TResult failing(String message),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return failing(message);
   }
@@ -948,10 +804,9 @@ class _$_FailingPersonagesState implements _FailingPersonagesState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<PersonageModel> personageList, bool isGrid),
+    TResult data(List<Personage> personagesList, bool isGrid),
     TResult initial(),
     TResult loading(),
-    TResult loadingSuccess(),
     TResult failing(String message),
     @required TResult orElse(),
   }) {
@@ -965,16 +820,14 @@ class _$_FailingPersonagesState implements _FailingPersonagesState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult data(_DataPersonagesState value),
+    @required TResult data(DataPersonagesState value),
     @required TResult initial(_InitialPersonagesState value),
     @required TResult loading(_LoadingPersonagesState value),
-    @required TResult loadingSuccess(_LoadingSuccessPersonagesState value),
     @required TResult failing(_FailingPersonagesState value),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return failing(this);
   }
@@ -982,10 +835,9 @@ class _$_FailingPersonagesState implements _FailingPersonagesState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult data(_DataPersonagesState value),
+    TResult data(DataPersonagesState value),
     TResult initial(_InitialPersonagesState value),
     TResult loading(_LoadingPersonagesState value),
-    TResult loadingSuccess(_LoadingSuccessPersonagesState value),
     TResult failing(_FailingPersonagesState value),
     @required TResult orElse(),
   }) {

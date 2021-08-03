@@ -2,15 +2,18 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:rick_and_morty/resources/variables.dart';
-import 'package:rick_and_morty/resources/models/personage_model.dart';
+import 'package:rick_and_morty/data/network/models/get_all_models/personages_model.dart';
+import 'package:rick_and_morty/data/repository.dart';
 
 part 'personages_event.dart';
 part 'personages_state.dart';
 part 'personages_bloc.freezed.dart';
 
 class PersonagesBloc extends Bloc<PersonagesEvent, PersonagesState> {
+  final _repository = Repository();
+  PersonagesModel personagesList;
   bool isGrid = false;
+
   PersonagesBloc() : super(PersonagesState.initial());
 
   @override
@@ -23,16 +26,16 @@ class PersonagesBloc extends Bloc<PersonagesEvent, PersonagesState> {
 
   Stream<PersonagesState> _mapInitialPersonagesEvent(
       _InitialPersonagesEvent event) async* {
+    personagesList = await _repository.getPersonages();
     yield PersonagesState.loading();
     try {
-      yield PersonagesState.loadingSuccess();
+      yield PersonagesState.data(
+        personagesList: personagesList.data,
+        isGrid: isGrid,
+      );
     } catch (e) {
       yield PersonagesState.failing(message: e.toString());
     }
-    yield PersonagesState.data(
-      personageList: personageList,
-      isGrid: isGrid,
-    );
   }
 
   Stream<PersonagesState> _mapSelectedViewPersonagesEvent(
@@ -40,7 +43,7 @@ class PersonagesBloc extends Bloc<PersonagesEvent, PersonagesState> {
     yield PersonagesState.loading();
     isGrid = !event.isGrid;
     yield PersonagesState.data(
-      personageList: personageList,
+      personagesList: personagesList.data,
       isGrid: isGrid,
     );
   }

@@ -5,6 +5,7 @@ import 'package:rick_and_morty/screens/episodes/bloc/episodes_bloc.dart';
 import 'package:rick_and_morty/screens/locations/bloc/locations_bloc.dart';
 import 'package:rick_and_morty/screens/main/main_navigation.dart';
 import 'package:rick_and_morty/screens/personages/bloc/personages_bloc.dart';
+import 'package:rick_and_morty/screens/splash/screen2.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,7 +35,14 @@ class MyApp extends StatelessWidget {
           value: SystemUiOverlayStyle(
             statusBarColor: Colors.transparent,
           ),
-          child: MainNavigation(),
+          child: BlocBuilder<PersonagesBloc, PersonagesState>(
+            builder: (context, state) {
+              if (state is DataPersonagesState) {
+                return MainNavigation();
+              }
+              return SplashScreen2();
+            },
+          ),
         ),
       ),
     );

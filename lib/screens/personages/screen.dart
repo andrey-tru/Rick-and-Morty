@@ -26,7 +26,7 @@ class PersonagesScreen extends StatelessWidget {
               bottom: PreferredSize(
                 preferredSize: Size.fromHeight(60),
                 child: TotalItems(
-                  totalItems: _data.personageList.length.toString(),
+                  totalItems: _data.personagesList.length.toString(),
                   onSelected: (value) {
                     context.read<PersonagesBloc>()
                       ..add(
@@ -40,10 +40,10 @@ class PersonagesScreen extends StatelessWidget {
               color: ColorPalette.bg,
               child: _data.isGrid
                   ? PersonagesGrid(
-                      personageList: _data.personageList,
+                      personageList: _data.personagesList,
                     )
                   : PersonagesList(
-                      personageList: _data.personageList,
+                      personageList: _data.personagesList,
                     ),
             ),
           ),

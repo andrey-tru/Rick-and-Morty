@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty/resources/models/location_model.dart';
+import 'package:rick_and_morty/data/network/models/get_all_models/locations_model.dart';
 import 'package:rick_and_morty/theme/color_theme.dart';
 import 'package:rick_and_morty/theme/text_theme.dart';
 
 class LocationsListItem extends StatelessWidget {
-  final LocationModel locationList;
+  final Location locationList;
 
   LocationsListItem({@required this.locationList});
 
@@ -25,8 +25,8 @@ class LocationsListItem extends StatelessWidget {
           Container(
             height: 150,
             width: MediaQuery.of(context).size.width - 32,
-            child: Image.asset(
-              locationList.avatar,
+            child: Image.network(
+              locationList.imageName,
               fit: BoxFit.cover,
             ),
           ),
@@ -40,7 +40,7 @@ class LocationsListItem extends StatelessWidget {
                   style: TextThemes.titelText,
                 ),
                 Text(
-                  locationList.universe,
+                  '${locationList.type} ⋅ ${locationList.measurements}',
                   style: TextThemes.regularText,
                 ),
               ],

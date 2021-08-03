@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty/resources/models/location_model.dart';
+import 'package:rick_and_morty/data/network/models/get_all_models/locations_model.dart';
 import 'package:rick_and_morty/theme/text_theme.dart';
 
 class LocationInfo extends StatelessWidget {
-  final LocationModel locationList;
+  final Location locationList;
 
   LocationInfo({@required this.locationList});
 
@@ -19,14 +19,14 @@ class LocationInfo extends StatelessWidget {
             style: TextThemes.boldText,
           ),
           Text(
-            locationList.universe,
+            '${locationList.type} ⋅ ${locationList.measurements}',
             style: TextThemes.mediumSmallText,
           ),
           const SizedBox(
             height: 36,
           ),
           Text(
-            locationList.info,
+            locationList.about,
             style: TextThemes.regularInfoText,
           ),
         ],

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty/components/create_rote.dart';
+import 'package:rick_and_morty/data/network/models/get_all_models/locations_model.dart';
 import 'package:rick_and_morty/screens/location_profile/screen.dart';
-import 'package:rick_and_morty/resources/models/location_model.dart';
 import 'package:rick_and_morty/screens/locations/widgets/locations_list_item.dart';
 
 class LocationsList extends StatelessWidget {
-  final List<LocationModel> locationList;
+  final List<Location> locationList;
 
   LocationsList({@required this.locationList});
 

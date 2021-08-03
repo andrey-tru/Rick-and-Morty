@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rick_and_morty/data/network/models/get_all_models/personages_model.dart';
 import 'package:rick_and_morty/resources/icons.dart';
-import 'package:rick_and_morty/resources/models/personage_model.dart';
+import 'package:rick_and_morty/resources/place_of_Birth.dart';
+import 'package:rick_and_morty/resources/status.dart';
 import 'package:rick_and_morty/theme/color_theme.dart';
 import 'package:rick_and_morty/theme/text_theme.dart';
 
 class PersonageInfo extends StatelessWidget {
-  final PersonageModel personageList;
+  final Personage personageList;
 
   PersonageInfo({@required this.personageList});
 
@@ -20,16 +22,16 @@ class PersonageInfo extends StatelessWidget {
           Align(
             alignment: Alignment.center,
             child: Text(
-              personageList.name,
+              personageList.fullName,
               style: TextThemes.regularBigText,
             ),
           ),
           Align(
             alignment: Alignment.center,
             child: Text(
-              personageList.condition,
+              getStatus(personageList.status),
               style: TextThemes.mediumSmallText.copyWith(
-                color: personageList.condition == 'Живой'
+                color: getStatus(personageList.status) == 'Живой'
                     ? ColorPalette.green
                     : ColorPalette.red,
               ),
@@ -39,7 +41,7 @@ class PersonageInfo extends StatelessWidget {
             height: 36,
           ),
           Text(
-            personageList.info,
+            personageList.about,
             style: TextThemes.regularInfoText,
           ),
           const SizedBox(
@@ -57,7 +59,7 @@ class PersonageInfo extends StatelessWidget {
                       style: TextThemes.regularText,
                     ),
                     Text(
-                      personageList.gender,
+                      getGender(personageList.gender),
                       style: TextThemes.regularInfoText,
                     ),
                   ],
@@ -94,7 +96,7 @@ class PersonageInfo extends StatelessWidget {
                 style: TextThemes.regularText,
               ),
               subtitle: Text(
-                personageList.birthplace,
+                getBirth(personageList.placeOfBirth.toString()),
                 style: TextThemes.regularInfoText,
               ),
               trailing: Container(
@@ -117,7 +119,7 @@ class PersonageInfo extends StatelessWidget {
                 style: TextThemes.regularText,
               ),
               subtitle: Text(
-                personageList.location,
+                personageList.location.name,
                 style: TextThemes.regularInfoText,
               ),
               trailing: Container(

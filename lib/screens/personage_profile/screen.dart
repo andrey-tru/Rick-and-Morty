@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:rick_and_morty/data/network/models/get_all_models/personages_model.dart';
 import 'package:rick_and_morty/screens/personage_profile/widgets/personage_appbar.dart';
 import 'package:rick_and_morty/screens/personage_profile/widgets/personage_episodes.dart';
 import 'package:rick_and_morty/screens/personage_profile/widgets/personage_info.dart';
 import 'package:rick_and_morty/screens/personage_profile/widgets/personage_preview.dart';
-import 'package:rick_and_morty/resources/models/personage_model.dart';
 import 'package:rick_and_morty/theme/color_theme.dart';
 
 class PersonageProfileScreen extends StatelessWidget {
-  final PersonageModel personageList;
+  final Personage personageList;
   final int id;
 
   PersonageProfileScreen({@required this.personageList, @required this.id});
@@ -27,7 +27,7 @@ class PersonageProfileScreen extends StatelessWidget {
           color: ColorPalette.bg,
           child: Column(
             children: [
-              PersonagePreview(avatar: personageList.avatar),
+              PersonagePreview(avatar: personageList.imageName),
               const SizedBox(
                 height: 24,
               ),

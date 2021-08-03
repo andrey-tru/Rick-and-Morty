@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty/resources/models/personage_model.dart';
+import 'package:rick_and_morty/data/network/models/get_all_models/personages_model.dart';
+import 'package:rick_and_morty/resources/status.dart';
 import 'package:rick_and_morty/theme/color_theme.dart';
 import 'package:rick_and_morty/theme/text_theme.dart';
 
 class PersonagesListItem extends StatelessWidget {
-  final PersonageModel personageList;
+  final Personage personageList;
 
   PersonagesListItem({@required this.personageList});
 
@@ -17,9 +18,18 @@ class PersonagesListItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          CircleAvatar(
-            radius: 37,
-            child: Image.asset(personageList.avatar),
+          Container(
+            width: 74,
+            height: 74,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(37),
+              image: DecorationImage(
+                image: NetworkImage(
+                  personageList.imageName,
+                ),
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
           const SizedBox(
             width: 18,
@@ -28,19 +38,19 @@ class PersonagesListItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                personageList.condition,
+                getStatus(personageList.status),
                 style: TextThemes.mediumSmallText.copyWith(
-                  color: personageList.condition == 'Живой'
+                  color: getStatus(personageList.status) == 'Живой'
                       ? ColorPalette.green
                       : ColorPalette.red,
                 ),
               ),
               Text(
-                personageList.name,
+                personageList.fullName,
                 style: TextThemes.mediumText,
               ),
               Text(
-                '${personageList.race}, ${personageList.gender}',
+                '${personageList.race}, ${getGender(personageList.gender)}',
                 style: TextThemes.regularText,
               ),
             ],

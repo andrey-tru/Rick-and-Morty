@@ -152,8 +152,8 @@ class _$LocationsStateTearOff {
   const _$LocationsStateTearOff();
 
 // ignore: unused_element
-  _DataLocationsState data({@required List<LocationModel> locationList}) {
-    return _DataLocationsState(
+  DataLocationsState data({@required List<Location> locationList}) {
+    return DataLocationsState(
       locationList: locationList,
     );
   }
@@ -166,11 +166,6 @@ class _$LocationsStateTearOff {
 // ignore: unused_element
   _LoadingLocationsState loading() {
     return const _LoadingLocationsState();
-  }
-
-// ignore: unused_element
-  _LoadingSuccessLocationsState loadingSuccess() {
-    return const _LoadingSuccessLocationsState();
   }
 
 // ignore: unused_element
@@ -189,35 +184,31 @@ const $LocationsState = _$LocationsStateTearOff();
 mixin _$LocationsState {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<LocationModel> locationList),
+    @required TResult data(List<Location> locationList),
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult loadingSuccess(),
     @required TResult failing(String message),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<LocationModel> locationList),
+    TResult data(List<Location> locationList),
     TResult initial(),
     TResult loading(),
-    TResult loadingSuccess(),
     TResult failing(String message),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult data(_DataLocationsState value),
+    @required TResult data(DataLocationsState value),
     @required TResult initial(_InitialLocationsState value),
     @required TResult loading(_LoadingLocationsState value),
-    @required TResult loadingSuccess(_LoadingSuccessLocationsState value),
     @required TResult failing(_FailingLocationsState value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult data(_DataLocationsState value),
+    TResult data(DataLocationsState value),
     TResult initial(_InitialLocationsState value),
     TResult loading(_LoadingLocationsState value),
-    TResult loadingSuccess(_LoadingSuccessLocationsState value),
     TResult failing(_FailingLocationsState value),
     @required TResult orElse(),
   });
@@ -241,43 +232,43 @@ class _$LocationsStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$DataLocationsStateCopyWith<$Res> {
-  factory _$DataLocationsStateCopyWith(
-          _DataLocationsState value, $Res Function(_DataLocationsState) then) =
-      __$DataLocationsStateCopyWithImpl<$Res>;
-  $Res call({List<LocationModel> locationList});
+abstract class $DataLocationsStateCopyWith<$Res> {
+  factory $DataLocationsStateCopyWith(
+          DataLocationsState value, $Res Function(DataLocationsState) then) =
+      _$DataLocationsStateCopyWithImpl<$Res>;
+  $Res call({List<Location> locationList});
 }
 
 /// @nodoc
-class __$DataLocationsStateCopyWithImpl<$Res>
+class _$DataLocationsStateCopyWithImpl<$Res>
     extends _$LocationsStateCopyWithImpl<$Res>
-    implements _$DataLocationsStateCopyWith<$Res> {
-  __$DataLocationsStateCopyWithImpl(
-      _DataLocationsState _value, $Res Function(_DataLocationsState) _then)
-      : super(_value, (v) => _then(v as _DataLocationsState));
+    implements $DataLocationsStateCopyWith<$Res> {
+  _$DataLocationsStateCopyWithImpl(
+      DataLocationsState _value, $Res Function(DataLocationsState) _then)
+      : super(_value, (v) => _then(v as DataLocationsState));
 
   @override
-  _DataLocationsState get _value => super._value as _DataLocationsState;
+  DataLocationsState get _value => super._value as DataLocationsState;
 
   @override
   $Res call({
     Object locationList = freezed,
   }) {
-    return _then(_DataLocationsState(
+    return _then(DataLocationsState(
       locationList: locationList == freezed
           ? _value.locationList
-          : locationList as List<LocationModel>,
+          : locationList as List<Location>,
     ));
   }
 }
 
 /// @nodoc
-class _$_DataLocationsState implements _DataLocationsState {
-  const _$_DataLocationsState({@required this.locationList})
+class _$DataLocationsState implements DataLocationsState {
+  const _$DataLocationsState({@required this.locationList})
       : assert(locationList != null);
 
   @override
-  final List<LocationModel> locationList;
+  final List<Location> locationList;
 
   @override
   String toString() {
@@ -287,7 +278,7 @@ class _$_DataLocationsState implements _DataLocationsState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _DataLocationsState &&
+        (other is DataLocationsState &&
             (identical(other.locationList, locationList) ||
                 const DeepCollectionEquality()
                     .equals(other.locationList, locationList)));
@@ -299,22 +290,20 @@ class _$_DataLocationsState implements _DataLocationsState {
 
   @JsonKey(ignore: true)
   @override
-  _$DataLocationsStateCopyWith<_DataLocationsState> get copyWith =>
-      __$DataLocationsStateCopyWithImpl<_DataLocationsState>(this, _$identity);
+  $DataLocationsStateCopyWith<DataLocationsState> get copyWith =>
+      _$DataLocationsStateCopyWithImpl<DataLocationsState>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<LocationModel> locationList),
+    @required TResult data(List<Location> locationList),
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult loadingSuccess(),
     @required TResult failing(String message),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return data(locationList);
   }
@@ -322,10 +311,9 @@ class _$_DataLocationsState implements _DataLocationsState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<LocationModel> locationList),
+    TResult data(List<Location> locationList),
     TResult initial(),
     TResult loading(),
-    TResult loadingSuccess(),
     TResult failing(String message),
     @required TResult orElse(),
   }) {
@@ -339,16 +327,14 @@ class _$_DataLocationsState implements _DataLocationsState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult data(_DataLocationsState value),
+    @required TResult data(DataLocationsState value),
     @required TResult initial(_InitialLocationsState value),
     @required TResult loading(_LoadingLocationsState value),
-    @required TResult loadingSuccess(_LoadingSuccessLocationsState value),
     @required TResult failing(_FailingLocationsState value),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return data(this);
   }
@@ -356,10 +342,9 @@ class _$_DataLocationsState implements _DataLocationsState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult data(_DataLocationsState value),
+    TResult data(DataLocationsState value),
     TResult initial(_InitialLocationsState value),
     TResult loading(_LoadingLocationsState value),
-    TResult loadingSuccess(_LoadingSuccessLocationsState value),
     TResult failing(_FailingLocationsState value),
     @required TResult orElse(),
   }) {
@@ -371,13 +356,13 @@ class _$_DataLocationsState implements _DataLocationsState {
   }
 }
 
-abstract class _DataLocationsState implements LocationsState {
-  const factory _DataLocationsState(
-      {@required List<LocationModel> locationList}) = _$_DataLocationsState;
+abstract class DataLocationsState implements LocationsState {
+  const factory DataLocationsState({@required List<Location> locationList}) =
+      _$DataLocationsState;
 
-  List<LocationModel> get locationList;
+  List<Location> get locationList;
   @JsonKey(ignore: true)
-  _$DataLocationsStateCopyWith<_DataLocationsState> get copyWith;
+  $DataLocationsStateCopyWith<DataLocationsState> get copyWith;
 }
 
 /// @nodoc
@@ -419,16 +404,14 @@ class _$_InitialLocationsState implements _InitialLocationsState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<LocationModel> locationList),
+    @required TResult data(List<Location> locationList),
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult loadingSuccess(),
     @required TResult failing(String message),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return initial();
   }
@@ -436,10 +419,9 @@ class _$_InitialLocationsState implements _InitialLocationsState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<LocationModel> locationList),
+    TResult data(List<Location> locationList),
     TResult initial(),
     TResult loading(),
-    TResult loadingSuccess(),
     TResult failing(String message),
     @required TResult orElse(),
   }) {
@@ -453,16 +435,14 @@ class _$_InitialLocationsState implements _InitialLocationsState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult data(_DataLocationsState value),
+    @required TResult data(DataLocationsState value),
     @required TResult initial(_InitialLocationsState value),
     @required TResult loading(_LoadingLocationsState value),
-    @required TResult loadingSuccess(_LoadingSuccessLocationsState value),
     @required TResult failing(_FailingLocationsState value),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return initial(this);
   }
@@ -470,10 +450,9 @@ class _$_InitialLocationsState implements _InitialLocationsState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult data(_DataLocationsState value),
+    TResult data(DataLocationsState value),
     TResult initial(_InitialLocationsState value),
     TResult loading(_LoadingLocationsState value),
-    TResult loadingSuccess(_LoadingSuccessLocationsState value),
     TResult failing(_FailingLocationsState value),
     @required TResult orElse(),
   }) {
@@ -528,16 +507,14 @@ class _$_LoadingLocationsState implements _LoadingLocationsState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<LocationModel> locationList),
+    @required TResult data(List<Location> locationList),
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult loadingSuccess(),
     @required TResult failing(String message),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return loading();
   }
@@ -545,10 +522,9 @@ class _$_LoadingLocationsState implements _LoadingLocationsState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<LocationModel> locationList),
+    TResult data(List<Location> locationList),
     TResult initial(),
     TResult loading(),
-    TResult loadingSuccess(),
     TResult failing(String message),
     @required TResult orElse(),
   }) {
@@ -562,16 +538,14 @@ class _$_LoadingLocationsState implements _LoadingLocationsState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult data(_DataLocationsState value),
+    @required TResult data(DataLocationsState value),
     @required TResult initial(_InitialLocationsState value),
     @required TResult loading(_LoadingLocationsState value),
-    @required TResult loadingSuccess(_LoadingSuccessLocationsState value),
     @required TResult failing(_FailingLocationsState value),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return loading(this);
   }
@@ -579,10 +553,9 @@ class _$_LoadingLocationsState implements _LoadingLocationsState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult data(_DataLocationsState value),
+    TResult data(DataLocationsState value),
     TResult initial(_InitialLocationsState value),
     TResult loading(_LoadingLocationsState value),
-    TResult loadingSuccess(_LoadingSuccessLocationsState value),
     TResult failing(_FailingLocationsState value),
     @required TResult orElse(),
   }) {
@@ -596,119 +569,6 @@ class _$_LoadingLocationsState implements _LoadingLocationsState {
 
 abstract class _LoadingLocationsState implements LocationsState {
   const factory _LoadingLocationsState() = _$_LoadingLocationsState;
-}
-
-/// @nodoc
-abstract class _$LoadingSuccessLocationsStateCopyWith<$Res> {
-  factory _$LoadingSuccessLocationsStateCopyWith(
-          _LoadingSuccessLocationsState value,
-          $Res Function(_LoadingSuccessLocationsState) then) =
-      __$LoadingSuccessLocationsStateCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$LoadingSuccessLocationsStateCopyWithImpl<$Res>
-    extends _$LocationsStateCopyWithImpl<$Res>
-    implements _$LoadingSuccessLocationsStateCopyWith<$Res> {
-  __$LoadingSuccessLocationsStateCopyWithImpl(
-      _LoadingSuccessLocationsState _value,
-      $Res Function(_LoadingSuccessLocationsState) _then)
-      : super(_value, (v) => _then(v as _LoadingSuccessLocationsState));
-
-  @override
-  _LoadingSuccessLocationsState get _value =>
-      super._value as _LoadingSuccessLocationsState;
-}
-
-/// @nodoc
-class _$_LoadingSuccessLocationsState implements _LoadingSuccessLocationsState {
-  const _$_LoadingSuccessLocationsState();
-
-  @override
-  String toString() {
-    return 'LocationsState.loadingSuccess()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _LoadingSuccessLocationsState);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult data(List<LocationModel> locationList),
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult loadingSuccess(),
-    @required TResult failing(String message),
-  }) {
-    assert(data != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(loadingSuccess != null);
-    assert(failing != null);
-    return loadingSuccess();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult data(List<LocationModel> locationList),
-    TResult initial(),
-    TResult loading(),
-    TResult loadingSuccess(),
-    TResult failing(String message),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (loadingSuccess != null) {
-      return loadingSuccess();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult data(_DataLocationsState value),
-    @required TResult initial(_InitialLocationsState value),
-    @required TResult loading(_LoadingLocationsState value),
-    @required TResult loadingSuccess(_LoadingSuccessLocationsState value),
-    @required TResult failing(_FailingLocationsState value),
-  }) {
-    assert(data != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(loadingSuccess != null);
-    assert(failing != null);
-    return loadingSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult data(_DataLocationsState value),
-    TResult initial(_InitialLocationsState value),
-    TResult loading(_LoadingLocationsState value),
-    TResult loadingSuccess(_LoadingSuccessLocationsState value),
-    TResult failing(_FailingLocationsState value),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (loadingSuccess != null) {
-      return loadingSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LoadingSuccessLocationsState implements LocationsState {
-  const factory _LoadingSuccessLocationsState() =
-      _$_LoadingSuccessLocationsState;
 }
 
 /// @nodoc
@@ -774,16 +634,14 @@ class _$_FailingLocationsState implements _FailingLocationsState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<LocationModel> locationList),
+    @required TResult data(List<Location> locationList),
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult loadingSuccess(),
     @required TResult failing(String message),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return failing(message);
   }
@@ -791,10 +649,9 @@ class _$_FailingLocationsState implements _FailingLocationsState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<LocationModel> locationList),
+    TResult data(List<Location> locationList),
     TResult initial(),
     TResult loading(),
-    TResult loadingSuccess(),
     TResult failing(String message),
     @required TResult orElse(),
   }) {
@@ -808,16 +665,14 @@ class _$_FailingLocationsState implements _FailingLocationsState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult data(_DataLocationsState value),
+    @required TResult data(DataLocationsState value),
     @required TResult initial(_InitialLocationsState value),
     @required TResult loading(_LoadingLocationsState value),
-    @required TResult loadingSuccess(_LoadingSuccessLocationsState value),
     @required TResult failing(_FailingLocationsState value),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return failing(this);
   }
@@ -825,10 +680,9 @@ class _$_FailingLocationsState implements _FailingLocationsState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult data(_DataLocationsState value),
+    TResult data(DataLocationsState value),
     TResult initial(_InitialLocationsState value),
     TResult loading(_LoadingLocationsState value),
-    TResult loadingSuccess(_LoadingSuccessLocationsState value),
     TResult failing(_FailingLocationsState value),
     @required TResult orElse(),
   }) {

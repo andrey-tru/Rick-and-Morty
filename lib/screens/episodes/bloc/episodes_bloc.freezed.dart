@@ -152,8 +152,8 @@ class _$EpisodesStateTearOff {
   const _$EpisodesStateTearOff();
 
 // ignore: unused_element
-  _DataEpisodesState data({@required List<EpisodeModel> episodeList}) {
-    return _DataEpisodesState(
+  DataEpisodesState data({@required List<Episode> episodeList}) {
+    return DataEpisodesState(
       episodeList: episodeList,
     );
   }
@@ -166,11 +166,6 @@ class _$EpisodesStateTearOff {
 // ignore: unused_element
   _LoadingEpisodesState loading() {
     return const _LoadingEpisodesState();
-  }
-
-// ignore: unused_element
-  _LoadingSuccessEpisodesState loadingSuccess() {
-    return const _LoadingSuccessEpisodesState();
   }
 
 // ignore: unused_element
@@ -189,35 +184,31 @@ const $EpisodesState = _$EpisodesStateTearOff();
 mixin _$EpisodesState {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<EpisodeModel> episodeList),
+    @required TResult data(List<Episode> episodeList),
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult loadingSuccess(),
     @required TResult failing(String message),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<EpisodeModel> episodeList),
+    TResult data(List<Episode> episodeList),
     TResult initial(),
     TResult loading(),
-    TResult loadingSuccess(),
     TResult failing(String message),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult data(_DataEpisodesState value),
+    @required TResult data(DataEpisodesState value),
     @required TResult initial(_InitialEpisodesState value),
     @required TResult loading(_LoadingEpisodesState value),
-    @required TResult loadingSuccess(_LoadingSuccessEpisodesState value),
     @required TResult failing(_FailingEpisodesState value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult data(_DataEpisodesState value),
+    TResult data(DataEpisodesState value),
     TResult initial(_InitialEpisodesState value),
     TResult loading(_LoadingEpisodesState value),
-    TResult loadingSuccess(_LoadingSuccessEpisodesState value),
     TResult failing(_FailingEpisodesState value),
     @required TResult orElse(),
   });
@@ -241,43 +232,43 @@ class _$EpisodesStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$DataEpisodesStateCopyWith<$Res> {
-  factory _$DataEpisodesStateCopyWith(
-          _DataEpisodesState value, $Res Function(_DataEpisodesState) then) =
-      __$DataEpisodesStateCopyWithImpl<$Res>;
-  $Res call({List<EpisodeModel> episodeList});
+abstract class $DataEpisodesStateCopyWith<$Res> {
+  factory $DataEpisodesStateCopyWith(
+          DataEpisodesState value, $Res Function(DataEpisodesState) then) =
+      _$DataEpisodesStateCopyWithImpl<$Res>;
+  $Res call({List<Episode> episodeList});
 }
 
 /// @nodoc
-class __$DataEpisodesStateCopyWithImpl<$Res>
+class _$DataEpisodesStateCopyWithImpl<$Res>
     extends _$EpisodesStateCopyWithImpl<$Res>
-    implements _$DataEpisodesStateCopyWith<$Res> {
-  __$DataEpisodesStateCopyWithImpl(
-      _DataEpisodesState _value, $Res Function(_DataEpisodesState) _then)
-      : super(_value, (v) => _then(v as _DataEpisodesState));
+    implements $DataEpisodesStateCopyWith<$Res> {
+  _$DataEpisodesStateCopyWithImpl(
+      DataEpisodesState _value, $Res Function(DataEpisodesState) _then)
+      : super(_value, (v) => _then(v as DataEpisodesState));
 
   @override
-  _DataEpisodesState get _value => super._value as _DataEpisodesState;
+  DataEpisodesState get _value => super._value as DataEpisodesState;
 
   @override
   $Res call({
     Object episodeList = freezed,
   }) {
-    return _then(_DataEpisodesState(
+    return _then(DataEpisodesState(
       episodeList: episodeList == freezed
           ? _value.episodeList
-          : episodeList as List<EpisodeModel>,
+          : episodeList as List<Episode>,
     ));
   }
 }
 
 /// @nodoc
-class _$_DataEpisodesState implements _DataEpisodesState {
-  const _$_DataEpisodesState({@required this.episodeList})
+class _$DataEpisodesState implements DataEpisodesState {
+  const _$DataEpisodesState({@required this.episodeList})
       : assert(episodeList != null);
 
   @override
-  final List<EpisodeModel> episodeList;
+  final List<Episode> episodeList;
 
   @override
   String toString() {
@@ -287,7 +278,7 @@ class _$_DataEpisodesState implements _DataEpisodesState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _DataEpisodesState &&
+        (other is DataEpisodesState &&
             (identical(other.episodeList, episodeList) ||
                 const DeepCollectionEquality()
                     .equals(other.episodeList, episodeList)));
@@ -299,22 +290,20 @@ class _$_DataEpisodesState implements _DataEpisodesState {
 
   @JsonKey(ignore: true)
   @override
-  _$DataEpisodesStateCopyWith<_DataEpisodesState> get copyWith =>
-      __$DataEpisodesStateCopyWithImpl<_DataEpisodesState>(this, _$identity);
+  $DataEpisodesStateCopyWith<DataEpisodesState> get copyWith =>
+      _$DataEpisodesStateCopyWithImpl<DataEpisodesState>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<EpisodeModel> episodeList),
+    @required TResult data(List<Episode> episodeList),
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult loadingSuccess(),
     @required TResult failing(String message),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return data(episodeList);
   }
@@ -322,10 +311,9 @@ class _$_DataEpisodesState implements _DataEpisodesState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<EpisodeModel> episodeList),
+    TResult data(List<Episode> episodeList),
     TResult initial(),
     TResult loading(),
-    TResult loadingSuccess(),
     TResult failing(String message),
     @required TResult orElse(),
   }) {
@@ -339,16 +327,14 @@ class _$_DataEpisodesState implements _DataEpisodesState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult data(_DataEpisodesState value),
+    @required TResult data(DataEpisodesState value),
     @required TResult initial(_InitialEpisodesState value),
     @required TResult loading(_LoadingEpisodesState value),
-    @required TResult loadingSuccess(_LoadingSuccessEpisodesState value),
     @required TResult failing(_FailingEpisodesState value),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return data(this);
   }
@@ -356,10 +342,9 @@ class _$_DataEpisodesState implements _DataEpisodesState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult data(_DataEpisodesState value),
+    TResult data(DataEpisodesState value),
     TResult initial(_InitialEpisodesState value),
     TResult loading(_LoadingEpisodesState value),
-    TResult loadingSuccess(_LoadingSuccessEpisodesState value),
     TResult failing(_FailingEpisodesState value),
     @required TResult orElse(),
   }) {
@@ -371,13 +356,13 @@ class _$_DataEpisodesState implements _DataEpisodesState {
   }
 }
 
-abstract class _DataEpisodesState implements EpisodesState {
-  const factory _DataEpisodesState({@required List<EpisodeModel> episodeList}) =
-      _$_DataEpisodesState;
+abstract class DataEpisodesState implements EpisodesState {
+  const factory DataEpisodesState({@required List<Episode> episodeList}) =
+      _$DataEpisodesState;
 
-  List<EpisodeModel> get episodeList;
+  List<Episode> get episodeList;
   @JsonKey(ignore: true)
-  _$DataEpisodesStateCopyWith<_DataEpisodesState> get copyWith;
+  $DataEpisodesStateCopyWith<DataEpisodesState> get copyWith;
 }
 
 /// @nodoc
@@ -419,16 +404,14 @@ class _$_InitialEpisodesState implements _InitialEpisodesState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<EpisodeModel> episodeList),
+    @required TResult data(List<Episode> episodeList),
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult loadingSuccess(),
     @required TResult failing(String message),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return initial();
   }
@@ -436,10 +419,9 @@ class _$_InitialEpisodesState implements _InitialEpisodesState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<EpisodeModel> episodeList),
+    TResult data(List<Episode> episodeList),
     TResult initial(),
     TResult loading(),
-    TResult loadingSuccess(),
     TResult failing(String message),
     @required TResult orElse(),
   }) {
@@ -453,16 +435,14 @@ class _$_InitialEpisodesState implements _InitialEpisodesState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult data(_DataEpisodesState value),
+    @required TResult data(DataEpisodesState value),
     @required TResult initial(_InitialEpisodesState value),
     @required TResult loading(_LoadingEpisodesState value),
-    @required TResult loadingSuccess(_LoadingSuccessEpisodesState value),
     @required TResult failing(_FailingEpisodesState value),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return initial(this);
   }
@@ -470,10 +450,9 @@ class _$_InitialEpisodesState implements _InitialEpisodesState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult data(_DataEpisodesState value),
+    TResult data(DataEpisodesState value),
     TResult initial(_InitialEpisodesState value),
     TResult loading(_LoadingEpisodesState value),
-    TResult loadingSuccess(_LoadingSuccessEpisodesState value),
     TResult failing(_FailingEpisodesState value),
     @required TResult orElse(),
   }) {
@@ -528,16 +507,14 @@ class _$_LoadingEpisodesState implements _LoadingEpisodesState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<EpisodeModel> episodeList),
+    @required TResult data(List<Episode> episodeList),
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult loadingSuccess(),
     @required TResult failing(String message),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return loading();
   }
@@ -545,10 +522,9 @@ class _$_LoadingEpisodesState implements _LoadingEpisodesState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<EpisodeModel> episodeList),
+    TResult data(List<Episode> episodeList),
     TResult initial(),
     TResult loading(),
-    TResult loadingSuccess(),
     TResult failing(String message),
     @required TResult orElse(),
   }) {
@@ -562,16 +538,14 @@ class _$_LoadingEpisodesState implements _LoadingEpisodesState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult data(_DataEpisodesState value),
+    @required TResult data(DataEpisodesState value),
     @required TResult initial(_InitialEpisodesState value),
     @required TResult loading(_LoadingEpisodesState value),
-    @required TResult loadingSuccess(_LoadingSuccessEpisodesState value),
     @required TResult failing(_FailingEpisodesState value),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return loading(this);
   }
@@ -579,10 +553,9 @@ class _$_LoadingEpisodesState implements _LoadingEpisodesState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult data(_DataEpisodesState value),
+    TResult data(DataEpisodesState value),
     TResult initial(_InitialEpisodesState value),
     TResult loading(_LoadingEpisodesState value),
-    TResult loadingSuccess(_LoadingSuccessEpisodesState value),
     TResult failing(_FailingEpisodesState value),
     @required TResult orElse(),
   }) {
@@ -596,118 +569,6 @@ class _$_LoadingEpisodesState implements _LoadingEpisodesState {
 
 abstract class _LoadingEpisodesState implements EpisodesState {
   const factory _LoadingEpisodesState() = _$_LoadingEpisodesState;
-}
-
-/// @nodoc
-abstract class _$LoadingSuccessEpisodesStateCopyWith<$Res> {
-  factory _$LoadingSuccessEpisodesStateCopyWith(
-          _LoadingSuccessEpisodesState value,
-          $Res Function(_LoadingSuccessEpisodesState) then) =
-      __$LoadingSuccessEpisodesStateCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$LoadingSuccessEpisodesStateCopyWithImpl<$Res>
-    extends _$EpisodesStateCopyWithImpl<$Res>
-    implements _$LoadingSuccessEpisodesStateCopyWith<$Res> {
-  __$LoadingSuccessEpisodesStateCopyWithImpl(
-      _LoadingSuccessEpisodesState _value,
-      $Res Function(_LoadingSuccessEpisodesState) _then)
-      : super(_value, (v) => _then(v as _LoadingSuccessEpisodesState));
-
-  @override
-  _LoadingSuccessEpisodesState get _value =>
-      super._value as _LoadingSuccessEpisodesState;
-}
-
-/// @nodoc
-class _$_LoadingSuccessEpisodesState implements _LoadingSuccessEpisodesState {
-  const _$_LoadingSuccessEpisodesState();
-
-  @override
-  String toString() {
-    return 'EpisodesState.loadingSuccess()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _LoadingSuccessEpisodesState);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult data(List<EpisodeModel> episodeList),
-    @required TResult initial(),
-    @required TResult loading(),
-    @required TResult loadingSuccess(),
-    @required TResult failing(String message),
-  }) {
-    assert(data != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(loadingSuccess != null);
-    assert(failing != null);
-    return loadingSuccess();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult data(List<EpisodeModel> episodeList),
-    TResult initial(),
-    TResult loading(),
-    TResult loadingSuccess(),
-    TResult failing(String message),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (loadingSuccess != null) {
-      return loadingSuccess();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult data(_DataEpisodesState value),
-    @required TResult initial(_InitialEpisodesState value),
-    @required TResult loading(_LoadingEpisodesState value),
-    @required TResult loadingSuccess(_LoadingSuccessEpisodesState value),
-    @required TResult failing(_FailingEpisodesState value),
-  }) {
-    assert(data != null);
-    assert(initial != null);
-    assert(loading != null);
-    assert(loadingSuccess != null);
-    assert(failing != null);
-    return loadingSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult data(_DataEpisodesState value),
-    TResult initial(_InitialEpisodesState value),
-    TResult loading(_LoadingEpisodesState value),
-    TResult loadingSuccess(_LoadingSuccessEpisodesState value),
-    TResult failing(_FailingEpisodesState value),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (loadingSuccess != null) {
-      return loadingSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _LoadingSuccessEpisodesState implements EpisodesState {
-  const factory _LoadingSuccessEpisodesState() = _$_LoadingSuccessEpisodesState;
 }
 
 /// @nodoc
@@ -773,16 +634,14 @@ class _$_FailingEpisodesState implements _FailingEpisodesState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<EpisodeModel> episodeList),
+    @required TResult data(List<Episode> episodeList),
     @required TResult initial(),
     @required TResult loading(),
-    @required TResult loadingSuccess(),
     @required TResult failing(String message),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return failing(message);
   }
@@ -790,10 +649,9 @@ class _$_FailingEpisodesState implements _FailingEpisodesState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<EpisodeModel> episodeList),
+    TResult data(List<Episode> episodeList),
     TResult initial(),
     TResult loading(),
-    TResult loadingSuccess(),
     TResult failing(String message),
     @required TResult orElse(),
   }) {
@@ -807,16 +665,14 @@ class _$_FailingEpisodesState implements _FailingEpisodesState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object>({
-    @required TResult data(_DataEpisodesState value),
+    @required TResult data(DataEpisodesState value),
     @required TResult initial(_InitialEpisodesState value),
     @required TResult loading(_LoadingEpisodesState value),
-    @required TResult loadingSuccess(_LoadingSuccessEpisodesState value),
     @required TResult failing(_FailingEpisodesState value),
   }) {
     assert(data != null);
     assert(initial != null);
     assert(loading != null);
-    assert(loadingSuccess != null);
     assert(failing != null);
     return failing(this);
   }
@@ -824,10 +680,9 @@ class _$_FailingEpisodesState implements _FailingEpisodesState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
-    TResult data(_DataEpisodesState value),
+    TResult data(DataEpisodesState value),
     TResult initial(_InitialEpisodesState value),
     TResult loading(_LoadingEpisodesState value),
-    TResult loadingSuccess(_LoadingSuccessEpisodesState value),
     TResult failing(_FailingEpisodesState value),
     @required TResult orElse(),
   }) {

@@ -18,7 +18,7 @@ class PersonagePreview extends StatelessWidget {
             scale: 1.3,
             child: AspectRatio(
               aspectRatio: 2.5,
-              child: Image.asset(
+              child: Image.network(
                 avatar,
                 fit: BoxFit.cover,
               ),
@@ -41,9 +41,18 @@ class PersonagePreview extends StatelessWidget {
                 style: BorderStyle.solid,
               ),
             ),
-            child: CircleAvatar(
-              radius: 73,
-              child: Image.asset(avatar),
+            child: Container(
+              width: 146,
+              height: 146,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(73),
+                image: DecorationImage(
+                  image: NetworkImage(
+                    avatar,
+                  ),
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
         ),
