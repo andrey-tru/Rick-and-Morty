@@ -33,7 +33,9 @@ class EpisodeProfileScreen extends StatelessWidget {
                 thickness: 2,
                 color: ColorPalette.searchBg,
               ),
-              DetailPersonages(),
+              DetailPersonages(
+                personageList: episodeList.characters,
+              ),
             ],
           ),
         ),

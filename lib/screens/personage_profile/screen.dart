@@ -36,7 +36,7 @@ class PersonageProfileScreen extends StatelessWidget {
                 thickness: 2,
                 color: ColorPalette.searchBg,
               ),
-              PersonageEpisodes(),
+              PersonageEpisodes(episodeList: personageList.episodes),
             ],
           ),
         ),

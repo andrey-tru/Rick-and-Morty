@@ -15,13 +15,13 @@ class PersonageId {
     final bool succeeded;
     final dynamic message;
     final dynamic error;
-    final Data data;
+    final DataPersonageId data;
 
     factory PersonageId.fromJson(Map<String, dynamic> json) => PersonageId(
         succeeded: json["succeeded"],
         message: json["message"],
         error: json["error"],
-        data: Data.fromJson(json["data"]),
+        data: DataPersonageId.fromJson(json["data"]),
     );
 
     Map<String, dynamic> toJson() => {
@@ -32,8 +32,8 @@ class PersonageId {
     };
 }
 
-class Data {
-    Data({
+class DataPersonageId {
+    DataPersonageId({
         this.id,
         this.firstName,
         this.lastName,
@@ -46,7 +46,6 @@ class Data {
         this.locationId,
         this.location,
         this.placeOfBirthId,
-        this.placeOfBirth,
         this.episodes,
     });
 
@@ -62,10 +61,9 @@ class Data {
     final String locationId;
     final Location location;
     final String placeOfBirthId;
-    final Location placeOfBirth;
-    final List<Episode> episodes;
+    final List<Location> episodes;
 
-    factory Data.fromJson(Map<String, dynamic> json) => Data(
+    factory DataPersonageId.fromJson(Map<String, dynamic> json) => DataPersonageId(
         id: json["id"],
         firstName: json["firstName"],
         lastName: json["lastName"],
@@ -78,8 +76,7 @@ class Data {
         locationId: json["locationId"],
         location: Location.fromJson(json["location"]),
         placeOfBirthId: json["placeOfBirthId"],
-        placeOfBirth: Location.fromJson(json["placeOfBirth"]),
-        episodes: List<Episode>.from(json["episodes"].map((x) => Episode.fromJson(x))),
+        episodes: List<Location>.from(json["episodes"].map((x) => Location.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
@@ -95,52 +92,7 @@ class Data {
         "locationId": locationId,
         "location": location.toJson(),
         "placeOfBirthId": placeOfBirthId,
-        "placeOfBirth": placeOfBirth.toJson(),
         "episodes": List<dynamic>.from(episodes.map((x) => x.toJson())),
-    };
-}
-
-class Episode {
-    Episode({
-        this.id,
-        this.name,
-        this.season,
-        this.series,
-        this.plot,
-        this.premiere,
-        this.imageName,
-        this.characters,
-    });
-
-    final String id;
-    final String name;
-    final int season;
-    final int series;
-    final String plot;
-    final DateTime premiere;
-    final String imageName;
-    final dynamic characters;
-
-    factory Episode.fromJson(Map<String, dynamic> json) => Episode(
-        id: json["id"],
-        name: json["name"],
-        season: json["season"],
-        series: json["series"],
-        plot: json["plot"],
-        premiere: DateTime.parse(json["premiere"]),
-        imageName: json["imageName"],
-        characters: json["characters"],
-    );
-
-    Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "season": season,
-        "series": series,
-        "plot": plot,
-        "premiere": premiere.toIso8601String(),
-        "imageName": imageName,
-        "characters": characters,
     };
 }
 
@@ -148,42 +100,18 @@ class Location {
     Location({
         this.id,
         this.name,
-        this.type,
-        this.measurements,
-        this.about,
-        this.imageName,
-        this.characters,
-        this.placeOfBirthCharacters,
     });
 
     final String id;
     final String name;
-    final String type;
-    final String measurements;
-    final String about;
-    final String imageName;
-    final List<dynamic> characters;
-    final List<dynamic> placeOfBirthCharacters;
 
     factory Location.fromJson(Map<String, dynamic> json) => Location(
         id: json["id"],
         name: json["name"],
-        type: json["type"],
-        measurements: json["measurements"],
-        about: json["about"],
-        imageName: json["imageName"],
-        characters: List<dynamic>.from(json["characters"].map((x) => x)),
-        placeOfBirthCharacters: List<dynamic>.from(json["placeOfBirthCharacters"].map((x) => x)),
     );
 
     Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
-        "type": type,
-        "measurements": measurements,
-        "about": about,
-        "imageName": imageName,
-        "characters": List<dynamic>.from(characters.map((x) => x)),
-        "placeOfBirthCharacters": List<dynamic>.from(placeOfBirthCharacters.map((x) => x)),
     };
 }

@@ -1,62 +1,68 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 import 'package:rick_and_morty/resources/icons.dart';
-import 'package:rick_and_morty/resources/models/episode_model.dart';
+import 'package:rick_and_morty/screens/personage_profile/bloc/personage_profile_bloc.dart';
 import 'package:rick_and_morty/theme/color_theme.dart';
 import 'package:rick_and_morty/theme/text_theme.dart';
 
 class PersonageEpisodesList extends StatelessWidget {
-  final EpisodeModel episodeList;
-
-  PersonageEpisodesList({@required this.episodeList});
-
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => {print('tap')},
-      child: ListTile(
-        contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 24),
-        leading: Container(
-          clipBehavior: Clip.antiAlias,
-          width: 60,
-          height: 60,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(
-              Radius.circular(10),
-            ),
-          ),
-          child: Image.asset(
-            episodeList.avatar,
-            fit: BoxFit.cover,
-          ),
-        ),
-        title: Text(
-          episodeList.series,
-          style: TextThemes.mediumSmallText.copyWith(
-            color: ColorPalette.blue,
-          ),
-        ),
-        subtitle: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              episodeList.name,
-              style: TextThemes.mediumText,
-            ),
-            Text(
-              episodeList.date,
-              style: TextThemes.regularText.copyWith(
-                fontSize: 14,
+    return BlocBuilder<PersonageProfileBloc, PersonageProfileState>(
+      builder: (context, state) {
+        return state.maybeMap(
+          loading: (_) => CircularProgressIndicator(),
+          data: (_data) => InkWell(
+            onTap: () => {print('tap')},
+            child: ListTile(
+              contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 24),
+              leading: Container(
+                clipBehavior: Clip.antiAlias,
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
+                child: Image.network(
+                  _data.personageEpispde.imageName,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              title: Text(
+                '${_data.personageEpispde.season} Ceзон, Серия ${_data.personageEpispde.series}',
+                style: TextThemes.mediumSmallText.copyWith(
+                  color: ColorPalette.blue,
+                ),
+              ),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    _data.personageEpispde.name,
+                    style: TextThemes.mediumText,
+                  ),
+                  Text(
+                    '${DateFormat('dd.MM.yyyy').format(_data.personageEpispde.premiere)}',
+                    style: TextThemes.regularText.copyWith(
+                      fontSize: 14,
+                    ),
+                  ),
+                ],
+              ),
+              trailing: Container(
+                width: 30,
+                alignment: Alignment.center,
+                child: SvgPicture.asset(MyIcons.arrow),
               ),
             ),
-          ],
-        ),
-        trailing: Container(
-          width: 30,
-          alignment: Alignment.center,
-          child: SvgPicture.asset(MyIcons.arrow),
-        ),
-      ),
+          ),
+          orElse: () => SizedBox.shrink(),
+        );
+      },
     );
   }
 }

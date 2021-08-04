@@ -29,7 +29,9 @@ class LocationProfileScreen extends StatelessWidget {
             children: [
               LocationPreview(avatar: locationList.imageName),
               LocationInfo(locationList: locationList),
-              DetailPersonages(),
+              DetailPersonages(
+                personageList: locationList.characters,
+              ),
             ],
           ),
         ),

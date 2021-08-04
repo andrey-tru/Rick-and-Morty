@@ -15,13 +15,13 @@ class EpisodeId {
     final bool succeeded;
     final dynamic message;
     final dynamic error;
-    final Data data;
+    final DataEpisodeId data;
 
     factory EpisodeId.fromJson(Map<String, dynamic> json) => EpisodeId(
         succeeded: json["succeeded"],
         message: json["message"],
         error: json["error"],
-        data: Data.fromJson(json["data"]),
+        data: DataEpisodeId.fromJson(json["data"]),
     );
 
     Map<String, dynamic> toJson() => {
@@ -32,8 +32,8 @@ class EpisodeId {
     };
 }
 
-class Data {
-    Data({
+class DataEpisodeId {
+    DataEpisodeId({
         this.id,
         this.name,
         this.season,
@@ -53,7 +53,7 @@ class Data {
     final String imageName;
     final List<Character> characters;
 
-    factory Data.fromJson(Map<String, dynamic> json) => Data(
+    factory DataEpisodeId.fromJson(Map<String, dynamic> json) => DataEpisodeId(
         id: json["id"],
         name: json["name"],
         season: json["season"],
