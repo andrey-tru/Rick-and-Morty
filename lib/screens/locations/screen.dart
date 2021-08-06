@@ -16,7 +16,6 @@ class LocationsScreen extends StatelessWidget {
             appBar: AppBar(
               elevation: 0,
               automaticallyImplyLeading: false,
-              backgroundColor: ColorPalette.bg,
               title: CreateSearch(
                 titel: 'Найти локацию',
                 sort: true,
@@ -31,13 +30,12 @@ class LocationsScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'Всего локаций: ${_data.locationList.length.toString()}',
-                    style: TextStyle(color: ColorPalette.grey),
+                    style: TextStyle(color: ColorPalette.gray),
                   ),
                 ),
               ),
             ),
             body: Container(
-              color: ColorPalette.bg,
               child: LocationsList(locationList: _data.locationList),
             ),
           ),

@@ -4,7 +4,6 @@ import 'package:rick_and_morty/screens/episode_profile/widgets/episode_info.dart
 import 'package:rick_and_morty/components/detail_personages.dart';
 import 'package:rick_and_morty/screens/episode_profile/widgets/episode_preview.dart';
 import 'package:rick_and_morty/screens/personage_profile/widgets/personage_appbar.dart';
-import 'package:rick_and_morty/theme/color_theme.dart';
 
 class EpisodeProfileScreen extends StatelessWidget {
   final Episode episodeList;
@@ -24,14 +23,13 @@ class EpisodeProfileScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: ColorPalette.bg,
           child: Column(
             children: [
               EpisodePreview(avatar: episodeList.imageName),
               EpisodeInfo(episodeList: episodeList),
               Divider(
                 thickness: 2,
-                color: ColorPalette.searchBg,
+                color: Theme.of(context).colorScheme.background,
               ),
               DetailPersonages(
                 personageList: episodeList.characters,

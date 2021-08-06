@@ -24,7 +24,6 @@ class PersonageProfileScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: ColorPalette.bg,
           child: Column(
             children: [
               PersonagePreview(avatar: personageList.imageName),
@@ -34,7 +33,7 @@ class PersonageProfileScreen extends StatelessWidget {
               PersonageInfo(personageList: personageList),
               Divider(
                 thickness: 2,
-                color: ColorPalette.searchBg,
+                color: ColorPalette.textOverlineDark,
               ),
               PersonageEpisodes(episodeList: personageList.episodes),
             ],

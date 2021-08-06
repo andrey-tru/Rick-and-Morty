@@ -1,27 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty/screens/settings/widgets/labeled_radio.dart';
-import 'package:rick_and_morty/theme/color_theme.dart';
-import 'package:rick_and_morty/theme/text_theme.dart';
+import 'package:provider/provider.dart';
+import 'package:rick_and_morty/resources/theme_type.dart';
+import 'package:rick_and_morty/theme/theme_manager.dart';
 
-class ThemeSelection extends StatefulWidget {
-  @override
-  _ThemeSelectionState createState() => _ThemeSelectionState();
-}
-
-class _ThemeSelectionState extends State<ThemeSelection> {
-  int selectedRadio;
-
-  @override
-  void initState() {
-    super.initState();
-    selectedRadio = 2;
-  }
-
+class ThemeSelection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final themeVM = Provider.of<ThemeNotifier>(context);
     return Dialog(
       insetPadding: EdgeInsets.all(0),
-      backgroundColor: ColorPalette.searchBg,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       elevation: 16,
       child: Container(
@@ -33,50 +20,34 @@ class _ThemeSelectionState extends State<ThemeSelection> {
           children: [
             Text(
               'Темная тема',
-              style: TextThemes.titelText,
+              style: Theme.of(context).textTheme.headline5,
             ),
             const SizedBox(
               height: 24,
             ),
-            LabeledRadio(
-              label: 'Выключена',
-              value: 1,
-              groupValue: selectedRadio,
-              onChanged: (value) {
-                setState(() {
-                  selectedRadio = value;
-                });
-              },
+            RadioListTile<ThemeType>(
+              title: Text(
+                "Темная тема",
+              ),
+              value: ThemeType.dark,
+              groupValue: themeVM.getThemeType(),
+              onChanged: (value) => themeVM.setThemeStyle(value),
             ),
-            LabeledRadio(
-              label: 'Включена',
-              value: 2,
-              groupValue: selectedRadio,
-              onChanged: (value) {
-                setState(() {
-                  selectedRadio = value;
-                });
-              },
+            RadioListTile<ThemeType>(
+              title: Text(
+                "Светлая тема",
+              ),
+              value: ThemeType.light,
+              groupValue: themeVM.getThemeType(),
+              onChanged: (value) => themeVM.setThemeStyle(value),
             ),
-            LabeledRadio(
-              label: 'Следовать настройкам системы',
-              value: 3,
-              groupValue: selectedRadio,
-              onChanged: (value) {
-                setState(() {
-                  selectedRadio = value;
-                });
-              },
-            ),
-            LabeledRadio(
-              label: 'В режиме энергосбережения',
-              value: 4,
-              groupValue: selectedRadio,
-              onChanged: (value) {
-                setState(() {
-                  selectedRadio = value;
-                });
-              },
+            RadioListTile<ThemeType>(
+              title: Text(
+                "Из настроек системы",
+              ),
+              value: ThemeType.byDevice,
+              groupValue: themeVM.getThemeType(),
+              onChanged: (value) => themeVM.setThemeStyle(value),
             ),
             Container(
               width: 300,
@@ -87,7 +58,7 @@ class _ThemeSelectionState extends State<ThemeSelection> {
                 },
                 child: Text(
                   'ОТМЕНА',
-                  style: TextThemes.tabBarText,
+                  style: Theme.of(context).textTheme.headline6,
                 ),
               ),
             ),

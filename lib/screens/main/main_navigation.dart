@@ -30,23 +30,20 @@ class _MainNavigationState extends State<MainNavigation> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: ColorPalette.searchBg,
         items: [
           BottomNavigationBarItem(
-            backgroundColor: ColorPalette.green,
             icon: SvgPicture.asset(
               MyIcons.personage,
               color:
-                  _currentIndex == 0 ? ColorPalette.green : ColorPalette.grey,
+                  _currentIndex == 0 ? Theme.of(context).colorScheme.onPrimary : ColorPalette.gray,
             ),
             label: 'Персонажи',
           ),
           BottomNavigationBarItem(
-            backgroundColor: ColorPalette.green,
             icon: SvgPicture.asset(
               MyIcons.location,
               color:
-                  _currentIndex == 1 ? ColorPalette.green : ColorPalette.grey,
+                  _currentIndex == 1 ? Theme.of(context).colorScheme.onPrimary : ColorPalette.gray,
             ),
             label: 'Локации',
           ),
@@ -54,7 +51,7 @@ class _MainNavigationState extends State<MainNavigation> {
             icon: SvgPicture.asset(
               MyIcons.episode,
               color:
-                  _currentIndex == 2 ? ColorPalette.green : ColorPalette.grey,
+                  _currentIndex == 2 ? Theme.of(context).colorScheme.onPrimary : ColorPalette.gray,
             ),
             label: 'Эпизоды',
           ),
@@ -62,14 +59,14 @@ class _MainNavigationState extends State<MainNavigation> {
             icon: SvgPicture.asset(
               MyIcons.setting,
               color:
-                  _currentIndex == 3 ? ColorPalette.green : ColorPalette.grey,
+                  _currentIndex == 3 ? Theme.of(context).colorScheme.onPrimary : ColorPalette.gray,
             ),
             label: 'Настройки',
           ),
         ],
         currentIndex: _currentIndex,
-        unselectedItemColor: ColorPalette.grey,
-        selectedItemColor: ColorPalette.green,
+        unselectedItemColor: ColorPalette.gray,
+        selectedItemColor: Theme.of(context).colorScheme.onPrimary,
         onTap: (i) {
           setState(() {
             _currentIndex = i;

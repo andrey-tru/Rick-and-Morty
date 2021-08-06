@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rick_and_morty/resources/icons.dart';
 import 'package:rick_and_morty/theme/color_theme.dart';
-import 'package:rick_and_morty/theme/text_theme.dart';
 
 class CreateSearch extends StatelessWidget {
   final String titel;
@@ -21,7 +20,7 @@ class CreateSearch extends StatelessWidget {
         horizontal: 15,
       ),
       decoration: BoxDecoration(
-        color: ColorPalette.searchBg,
+        color: Theme.of(context).colorScheme.background,
         borderRadius: BorderRadius.circular(100),
       ),
       child: Row(
@@ -30,15 +29,15 @@ class CreateSearch extends StatelessWidget {
           Container(
             width: MediaQuery.of(context).size.width / 1.41,
             child: TextField(
-              style: TextThemes.searchText.copyWith(
-                color: ColorPalette.white,
+              style: Theme.of(context).textTheme.bodyText1.copyWith(
+                color: Theme.of(context).colorScheme.primary,
               ),
               decoration: InputDecoration(
-                hintStyle: TextStyle(color: ColorPalette.grey),
+                hintStyle: TextStyle(color: ColorPalette.gray),
                 border: InputBorder.none,
                 icon: SvgPicture.asset(
                   MyIcons.search,
-                  color: ColorPalette.grey,
+                  color: ColorPalette.gray,
                 ),
                 hintText: titel,
               ),
@@ -50,14 +49,14 @@ class CreateSearch extends StatelessWidget {
                     Container(
                       width: 1,
                       height: 26,
-                      color: ColorPalette.grey,
+                      color: ColorPalette.gray,
                     ),
                     Container(
                       width: 40,
                       child: IconButton(
                         icon: SvgPicture.asset(
                           MyIcons.sort,
-                          color: ColorPalette.grey,
+                          color: ColorPalette.gray,
                         ),
                         onPressed: () {},
                       ),

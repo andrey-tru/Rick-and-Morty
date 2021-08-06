@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty/theme/color_theme.dart';
 
 class LocationPreview extends StatelessWidget {
   final String avatar;
@@ -30,7 +29,7 @@ class LocationPreview extends StatelessWidget {
             top: Radius.circular(30),
           ),
           child: Container(
-            color: ColorPalette.bg,
+            color: Theme.of(context).colorScheme.secondaryVariant,
             height: 34,
           ),
         ),

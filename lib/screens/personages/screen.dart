@@ -5,7 +5,6 @@ import 'package:rick_and_morty/screens/personages/bloc/personages_bloc.dart';
 import 'package:rick_and_morty/screens/personages/widgets/personages_grid.dart';
 import 'package:rick_and_morty/screens/personages/widgets/personages_list.dart';
 import 'package:rick_and_morty/screens/personages/widgets/total_items.dart';
-import 'package:rick_and_morty/theme/color_theme.dart';
 
 class PersonagesScreen extends StatelessWidget {
   @override
@@ -18,7 +17,6 @@ class PersonagesScreen extends StatelessWidget {
             appBar: AppBar(
               elevation: 0,
               automaticallyImplyLeading: false,
-              backgroundColor: ColorPalette.bg,
               title: CreateSearch(
                 titel: 'Найти персонажа',
                 sort: true,
@@ -37,7 +35,6 @@ class PersonagesScreen extends StatelessWidget {
               ),
             ),
             body: Container(
-              color: ColorPalette.bg,
               child: _data.isGrid
                   ? PersonagesGrid(
                       personageList: _data.personagesList,

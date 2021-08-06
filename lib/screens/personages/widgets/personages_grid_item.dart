@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:rick_and_morty/data/network/models/get_all_models/personages_model.dart';
 import 'package:rick_and_morty/resources/status.dart';
 import 'package:rick_and_morty/theme/color_theme.dart';
-import 'package:rick_and_morty/theme/text_theme.dart';
 
 class PersonagesGridItem extends StatelessWidget {
   final Personage personageList;
@@ -33,7 +32,7 @@ class PersonagesGridItem extends StatelessWidget {
           ),
           Text(
             getStatus(personageList.status),
-            style: TextThemes.mediumSmallText.copyWith(
+            style: Theme.of(context).textTheme.overline.copyWith(
               color: getStatus(personageList.status) == 'Живой'
                   ? ColorPalette.green
                   : ColorPalette.red,
@@ -41,13 +40,13 @@ class PersonagesGridItem extends StatelessWidget {
           ),
           Text(
             personageList.fullName,
-            style: TextThemes.mediumText.copyWith(
+            style: Theme.of(context).textTheme.subtitle1.copyWith(
               fontSize: 14,
             ),
           ),
           Text(
             '${personageList.race}, ${getGender(personageList.gender)}',
-            style: TextThemes.regularText,
+            style: Theme.of(context).textTheme.caption,
           ),
         ],
       ),

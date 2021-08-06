@@ -5,7 +5,6 @@ import 'package:intl/intl.dart';
 import 'package:rick_and_morty/resources/icons.dart';
 import 'package:rick_and_morty/screens/personage_profile/bloc/personage_profile_bloc.dart';
 import 'package:rick_and_morty/theme/color_theme.dart';
-import 'package:rick_and_morty/theme/text_theme.dart';
 
 class PersonageEpisodesList extends StatelessWidget {
   @override
@@ -34,7 +33,7 @@ class PersonageEpisodesList extends StatelessWidget {
               ),
               title: Text(
                 '${_data.personageEpispde.season} Ceзон, Серия ${_data.personageEpispde.series}',
-                style: TextThemes.mediumSmallText.copyWith(
+                style: Theme.of(context).textTheme.overline.copyWith(
                   color: ColorPalette.blue,
                 ),
               ),
@@ -43,11 +42,11 @@ class PersonageEpisodesList extends StatelessWidget {
                 children: [
                   Text(
                     _data.personageEpispde.name,
-                    style: TextThemes.mediumText,
+                    style: Theme.of(context).textTheme.subtitle1,
                   ),
                   Text(
                     '${DateFormat('dd.MM.yyyy').format(_data.personageEpispde.premiere)}',
-                    style: TextThemes.regularText.copyWith(
+                    style: Theme.of(context).textTheme.caption.copyWith(
                       fontSize: 14,
                     ),
                   ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:rick_and_morty/data/network/models/get_all_models/episodes_model.dart';
 import 'package:rick_and_morty/theme/color_theme.dart';
-import 'package:rick_and_morty/theme/text_theme.dart';
 
 class EpisodeInfo extends StatelessWidget {
   final Episode episodeList;
@@ -21,14 +20,14 @@ class EpisodeInfo extends StatelessWidget {
             child: Text(
               episodeList.name,
               textAlign: TextAlign.center,
-              style: TextThemes.boldText,
+              style: Theme.of(context).textTheme.headline4,
             ),
           ),
           Align(
             alignment: Alignment.center,
             child: Text(
               'Серия ${episodeList.series}',
-              style: TextThemes.mediumSmallText.copyWith(
+              style: Theme.of(context).textTheme.overline.copyWith(
                 color: ColorPalette.blue,
               ),
             ),
@@ -38,18 +37,18 @@ class EpisodeInfo extends StatelessWidget {
           ),
           Text(
             episodeList.plot,
-            style: TextThemes.regularInfoText,
+            style: Theme.of(context).textTheme.bodyText2,
           ),
           const SizedBox(
             height: 24,
           ),
           Text(
             'Премьера',
-            style: TextThemes.regularText,
+            style: Theme.of(context).textTheme.caption,
           ),
           Text(
             '${DateFormat('dd.MM.yyyy').format(episodeList.premiere)}',
-            style: TextThemes.regularInfoText,
+            style: Theme.of(context).textTheme.bodyText2,
           ),
           const SizedBox(
             height: 36,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty/data/network/models/get_all_models/locations_model.dart';
-import 'package:rick_and_morty/theme/text_theme.dart';
 
 class LocationInfo extends StatelessWidget {
   final Location locationList;
@@ -16,18 +15,18 @@ class LocationInfo extends StatelessWidget {
         children: [
           Text(
             locationList.name,
-            style: TextThemes.boldText,
+            style: Theme.of(context).textTheme.headline4,
           ),
           Text(
             '${locationList.type} ⋅ ${locationList.measurements}',
-            style: TextThemes.mediumSmallText,
+            style: Theme.of(context).textTheme.overline,
           ),
           const SizedBox(
             height: 36,
           ),
           Text(
             locationList.about,
-            style: TextThemes.regularInfoText,
+            style: Theme.of(context).textTheme.bodyText2,
           ),
         ],
       ),

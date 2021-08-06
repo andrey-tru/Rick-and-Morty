@@ -7,7 +7,7 @@ class SplashScreen2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: ColorPalette.bg,
+        color: ColorPalette.black,
         child: Stack(
           fit: StackFit.expand,
           children: [

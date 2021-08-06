@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty/theme/color_theme.dart';
 
 class PersonagePreview extends StatelessWidget {
   final String avatar;
@@ -37,7 +36,7 @@ class PersonagePreview extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(100)),
               border: Border.all(
                 width: 8,
-                color: ColorPalette.bg,
+                color: Theme.of(context).colorScheme.secondaryVariant,
                 style: BorderStyle.solid,
               ),
             ),

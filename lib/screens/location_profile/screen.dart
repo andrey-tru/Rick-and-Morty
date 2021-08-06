@@ -4,7 +4,6 @@ import 'package:rick_and_morty/data/network/models/get_all_models/locations_mode
 import 'package:rick_and_morty/screens/location_profile/widgets/location_info.dart';
 import 'package:rick_and_morty/screens/location_profile/widgets/location_preview.dart';
 import 'package:rick_and_morty/screens/personage_profile/widgets/personage_appbar.dart';
-import 'package:rick_and_morty/theme/color_theme.dart';
 
 class LocationProfileScreen extends StatelessWidget {
   final Location locationList;
@@ -24,7 +23,6 @@ class LocationProfileScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: ColorPalette.bg,
           child: Column(
             children: [
               LocationPreview(avatar: locationList.imageName),

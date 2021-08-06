@@ -5,7 +5,6 @@ import 'package:rick_and_morty/resources/icons.dart';
 import 'package:rick_and_morty/resources/status.dart';
 import 'package:rick_and_morty/screens/location_profile/bloc/location_profile_bloc.dart';
 import 'package:rick_and_morty/theme/color_theme.dart';
-import 'package:rick_and_morty/theme/text_theme.dart';
 
 class DetailPersonagesList extends StatelessWidget {
   @override
@@ -43,7 +42,7 @@ class DetailPersonagesList extends StatelessWidget {
                         children: [
                           Text(
                             getStatus(_data.locationPersonage.status),
-                            style: TextThemes.mediumSmallText.copyWith(
+                            style: Theme.of(context).textTheme.overline.copyWith(
                               color: getStatus(_data.locationPersonage.status) == 'Живой'
                                   ? ColorPalette.green
                                   : ColorPalette.red,
@@ -51,11 +50,11 @@ class DetailPersonagesList extends StatelessWidget {
                           ),
                           Text(
                             _data.locationPersonage.fullName,
-                            style: TextThemes.mediumText,
+                            style: Theme.of(context).textTheme.subtitle1,
                           ),
                           Text(
                             '${_data.locationPersonage.race}, ${getGender(_data.locationPersonage.gender)}',
-                            style: TextThemes.regularText,
+                            style: Theme.of(context).textTheme.caption,
                           ),
                         ],
                       ),

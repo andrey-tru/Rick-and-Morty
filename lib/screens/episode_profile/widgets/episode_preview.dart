@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rick_and_morty/resources/icons.dart';
-import 'package:rick_and_morty/theme/color_theme.dart';
 
 class EpisodePreview extends StatelessWidget {
   final String avatar;
@@ -32,7 +31,7 @@ class EpisodePreview extends StatelessWidget {
             top: Radius.circular(30),
           ),
           child: Container(
-            color: ColorPalette.bg,
+            color: Theme.of(context).colorScheme.secondaryVariant,
             height: 57,
           ),
         ),

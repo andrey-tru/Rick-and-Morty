@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/components/detail_personages_list.dart';
 import 'package:rick_and_morty/data/network/models/get_all_models/locations_model.dart';
 import 'package:rick_and_morty/screens/location_profile/bloc/location_profile_bloc.dart';
-import 'package:rick_and_morty/theme/text_theme.dart';
 
 class DetailPersonages extends StatelessWidget {
   final List<Character> personageList;
@@ -19,7 +18,7 @@ class DetailPersonages extends StatelessWidget {
         children: [
           Text(
             'Персонажи',
-            style: TextThemes.titelText,
+            style: Theme.of(context).textTheme.headline5,
           ),
           personageList == null
               ? Container(
@@ -27,7 +26,7 @@ class DetailPersonages extends StatelessWidget {
                   child: Center(
                     child: Text(
                       'Персонажей не найдено',
-                      style: TextThemes.titelText,
+                      style: Theme.of(context).textTheme.headline5,
                     ),
                   ),
                 )

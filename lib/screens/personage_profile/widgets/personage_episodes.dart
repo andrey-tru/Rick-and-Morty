@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/data/network/models/get_all_models/personages_model.dart';
 import 'package:rick_and_morty/screens/personage_profile/bloc/personage_profile_bloc.dart';
 import 'package:rick_and_morty/screens/personage_profile/widgets/personage_episodes_list.dart';
-import 'package:rick_and_morty/theme/text_theme.dart';
 
 class PersonageEpisodes extends StatelessWidget {
   final List<Location> episodeList;
@@ -21,12 +20,12 @@ class PersonageEpisodes extends StatelessWidget {
             children: [
               Text(
                 'Эпизоды',
-                style: TextThemes.titelText,
+                style: Theme.of(context).textTheme.headline5,
               ),
               TextButton(
                 child: Text(
                   'Все эпизоды',
-                  style: TextThemes.regularText,
+                  style: Theme.of(context).textTheme.caption,
                 ),
                 onPressed: () {},
               ),

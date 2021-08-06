@@ -27,12 +27,12 @@ class _TotalItemsState extends State<TotalItems> {
         children: [
           Text(
             'Всего персонажей: ${widget.totalItems}',
-            style: TextStyle(color: ColorPalette.grey),
+            style: TextStyle(color: ColorPalette.gray),
           ),
           IconButton(
             icon: SvgPicture.asset(
               isGrid ? MyIcons.positionGrid: MyIcons.positionList ,
-              color: ColorPalette.grey,
+              color: ColorPalette.gray,
             ),
             onPressed: () {
               setState(() {

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:rick_and_morty/resources/icons.dart';
+import 'package:rick_and_morty/resources/theme_type.dart';
 import 'package:rick_and_morty/screens/settings/widgets/theme_selection.dart';
 import 'package:rick_and_morty/theme/color_theme.dart';
-import 'package:rick_and_morty/theme/text_theme.dart';
+import 'package:rick_and_morty/theme/theme_manager.dart';
 
 class SettingsScreen extends StatelessWidget {
   @override
@@ -11,18 +13,17 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 50, horizontal: 16),
-        color: ColorPalette.bg,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'Настройки',
-              style: TextThemes.titelText,
+              style: Theme.of(context).textTheme.headline5,
             ),
             const SizedBox(height: 44),
             Text(
               'Внешний вид',
-              style: TextThemes.mediumSmallText,
+              style: Theme.of(context).textTheme.overline
             ),
             const SizedBox(height: 24),
             ListTile(
@@ -37,18 +38,20 @@ class SettingsScreen extends StatelessWidget {
               contentPadding: EdgeInsets.all(0),
               leading: SvgPicture.asset(
                 MyIcons.palette,
-                color: ColorPalette.white,
+                color: Theme.of(context).colorScheme.primary,
               ),
               title: Text(
-                'Темная тема',
-                style: TextThemes.searchText.copyWith(
-                  color: ColorPalette.white,
+                'Тема приложения',
+                style: Theme.of(context).textTheme.bodyText1.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
               subtitle: Text(
-                'Включена',
-                style: TextThemes.regularInfoText.copyWith(
-                  color: ColorPalette.grey,
+                themeName(
+                  Provider.of<ThemeNotifier>(context).getThemeType(),
+                ),
+                style: Theme.of(context).textTheme.bodyText2.copyWith(
+                  color: ColorPalette.textOverlineDark,
                 ),
               ),
               trailing: Container(
@@ -60,32 +63,32 @@ class SettingsScreen extends StatelessWidget {
             const SizedBox(height: 36),
             Divider(
               thickness: 2,
-              color: ColorPalette.searchBg,
+              color: Theme.of(context).colorScheme.background,
             ),
             const SizedBox(height: 36),
             Text(
               'О приложении',
-              style: TextThemes.mediumSmallText,
+              style: Theme.of(context).textTheme.overline,
             ),
             const SizedBox(height: 24),
             Text(
               'Зигерионцы помещают Джерри и Рика в симуляцию, чтобы узнать секрет изготовления концен-трирован- ной темной материи.',
-              style: TextThemes.regularInfoText,
+              style: Theme.of(context).textTheme.bodyText2,
             ),
             const SizedBox(height: 36),
             Divider(
               thickness: 2,
-              color: ColorPalette.searchBg,
+              color: Theme.of(context).colorScheme.background,
             ),
             const SizedBox(height: 36),
             Text(
               'Версия приложения',
-              style: TextThemes.mediumSmallText,
+              style: Theme.of(context).textTheme.overline,
             ),
             const SizedBox(height: 24),
             Text(
               'Rick & Morty  v1.0.0',
-              style: TextThemes.regularInfoText,
+              style: Theme.of(context).textTheme.bodyText2,
             ),
           ],
         ),

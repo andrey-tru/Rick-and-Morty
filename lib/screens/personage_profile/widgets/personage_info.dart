@@ -5,7 +5,6 @@ import 'package:rick_and_morty/resources/icons.dart';
 import 'package:rick_and_morty/resources/place_of_Birth.dart';
 import 'package:rick_and_morty/resources/status.dart';
 import 'package:rick_and_morty/theme/color_theme.dart';
-import 'package:rick_and_morty/theme/text_theme.dart';
 
 class PersonageInfo extends StatelessWidget {
   final Personage personageList;
@@ -23,14 +22,14 @@ class PersonageInfo extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(
               personageList.fullName,
-              style: TextThemes.regularBigText,
+              style: Theme.of(context).textTheme.headline3,
             ),
           ),
           Align(
             alignment: Alignment.center,
             child: Text(
               getStatus(personageList.status),
-              style: TextThemes.mediumSmallText.copyWith(
+              style: Theme.of(context).textTheme.overline.copyWith(
                 color: getStatus(personageList.status) == 'Живой'
                     ? ColorPalette.green
                     : ColorPalette.red,
@@ -42,7 +41,7 @@ class PersonageInfo extends StatelessWidget {
           ),
           Text(
             personageList.about,
-            style: TextThemes.regularInfoText,
+            style: Theme.of(context).textTheme.bodyText2,
           ),
           const SizedBox(
             height: 24,
@@ -56,11 +55,11 @@ class PersonageInfo extends StatelessWidget {
                   children: [
                     Text(
                       'Пол',
-                      style: TextThemes.regularText,
+                      style: Theme.of(context).textTheme.caption,
                     ),
                     Text(
                       getGender(personageList.gender),
-                      style: TextThemes.regularInfoText,
+                      style: Theme.of(context).textTheme.bodyText2,
                     ),
                   ],
                 ),
@@ -72,11 +71,11 @@ class PersonageInfo extends StatelessWidget {
                   children: [
                     Text(
                       'Расса',
-                      style: TextThemes.regularText,
+                      style: Theme.of(context).textTheme.caption,
                     ),
                     Text(
                       personageList.race,
-                      style: TextThemes.regularInfoText,
+                      style: Theme.of(context).textTheme.bodyText2,
                     ),
                   ],
                 ),
@@ -93,11 +92,11 @@ class PersonageInfo extends StatelessWidget {
               visualDensity: VisualDensity(horizontal: 0, vertical: -4),
               title: Text(
                 'Место рождения',
-                style: TextThemes.regularText,
+                style: Theme.of(context).textTheme.caption,
               ),
               subtitle: Text(
                 getBirth(personageList.placeOfBirth.toString()),
-                style: TextThemes.regularInfoText,
+                style: Theme.of(context).textTheme.bodyText2,
               ),
               trailing: Container(
                 width: 30,
@@ -116,11 +115,11 @@ class PersonageInfo extends StatelessWidget {
               visualDensity: VisualDensity(horizontal: 0, vertical: -4),
               title: Text(
                 'Местоположение',
-                style: TextThemes.regularText,
+                style: Theme.of(context).textTheme.caption,
               ),
               subtitle: Text(
                 personageList.location.name,
-                style: TextThemes.regularInfoText,
+                style: Theme.of(context).textTheme.bodyText2,
               ),
               trailing: Container(
                 width: 30,
