@@ -19,6 +19,10 @@ class LocationsScreen extends StatelessWidget {
               title: CreateSearch(
                 titel: 'Найти локацию',
                 sort: true,
+                  searchText: (text) => {
+                    BlocProvider.of<LocationsBloc>(context)
+                        .add(LocationsEvent.searchName(name: text)),
+                  },
               ),
               bottom: PreferredSize(
                 preferredSize: Size.fromHeight(60),

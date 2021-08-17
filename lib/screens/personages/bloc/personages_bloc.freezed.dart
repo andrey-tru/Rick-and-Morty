@@ -24,6 +24,13 @@ class _$PersonagesEventTearOff {
       isGrid: isGrid,
     );
   }
+
+// ignore: unused_element
+  _SearchNamePersonagesEvent searchName({@required String name}) {
+    return _SearchNamePersonagesEvent(
+      name: name,
+    );
+  }
 }
 
 /// @nodoc
@@ -36,22 +43,26 @@ mixin _$PersonagesEvent {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult selectedView(bool isGrid),
+    @required TResult searchName(String name),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult selectedView(bool isGrid),
+    TResult searchName(String name),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(_InitialPersonagesEvent value),
     @required TResult selectedView(_SelectedViewPersonagesEvent value),
+    @required TResult searchName(_SearchNamePersonagesEvent value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(_InitialPersonagesEvent value),
     TResult selectedView(_SelectedViewPersonagesEvent value),
+    TResult searchName(_SearchNamePersonagesEvent value),
     @required TResult orElse(),
   });
 }
@@ -114,9 +125,11 @@ class _$_InitialPersonagesEvent implements _InitialPersonagesEvent {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult selectedView(bool isGrid),
+    @required TResult searchName(String name),
   }) {
     assert(initial != null);
     assert(selectedView != null);
+    assert(searchName != null);
     return initial();
   }
 
@@ -125,6 +138,7 @@ class _$_InitialPersonagesEvent implements _InitialPersonagesEvent {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult selectedView(bool isGrid),
+    TResult searchName(String name),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -139,9 +153,11 @@ class _$_InitialPersonagesEvent implements _InitialPersonagesEvent {
   TResult map<TResult extends Object>({
     @required TResult initial(_InitialPersonagesEvent value),
     @required TResult selectedView(_SelectedViewPersonagesEvent value),
+    @required TResult searchName(_SearchNamePersonagesEvent value),
   }) {
     assert(initial != null);
     assert(selectedView != null);
+    assert(searchName != null);
     return initial(this);
   }
 
@@ -150,6 +166,7 @@ class _$_InitialPersonagesEvent implements _InitialPersonagesEvent {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_InitialPersonagesEvent value),
     TResult selectedView(_SelectedViewPersonagesEvent value),
+    TResult searchName(_SearchNamePersonagesEvent value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -232,9 +249,11 @@ class _$_SelectedViewPersonagesEvent implements _SelectedViewPersonagesEvent {
   TResult when<TResult extends Object>({
     @required TResult initial(),
     @required TResult selectedView(bool isGrid),
+    @required TResult searchName(String name),
   }) {
     assert(initial != null);
     assert(selectedView != null);
+    assert(searchName != null);
     return selectedView(isGrid);
   }
 
@@ -243,6 +262,7 @@ class _$_SelectedViewPersonagesEvent implements _SelectedViewPersonagesEvent {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
     TResult selectedView(bool isGrid),
+    TResult searchName(String name),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -257,9 +277,11 @@ class _$_SelectedViewPersonagesEvent implements _SelectedViewPersonagesEvent {
   TResult map<TResult extends Object>({
     @required TResult initial(_InitialPersonagesEvent value),
     @required TResult selectedView(_SelectedViewPersonagesEvent value),
+    @required TResult searchName(_SearchNamePersonagesEvent value),
   }) {
     assert(initial != null);
     assert(selectedView != null);
+    assert(searchName != null);
     return selectedView(this);
   }
 
@@ -268,6 +290,7 @@ class _$_SelectedViewPersonagesEvent implements _SelectedViewPersonagesEvent {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_InitialPersonagesEvent value),
     TResult selectedView(_SelectedViewPersonagesEvent value),
+    TResult searchName(_SearchNamePersonagesEvent value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -286,6 +309,134 @@ abstract class _SelectedViewPersonagesEvent implements PersonagesEvent {
   @JsonKey(ignore: true)
   _$SelectedViewPersonagesEventCopyWith<_SelectedViewPersonagesEvent>
       get copyWith;
+}
+
+/// @nodoc
+abstract class _$SearchNamePersonagesEventCopyWith<$Res> {
+  factory _$SearchNamePersonagesEventCopyWith(_SearchNamePersonagesEvent value,
+          $Res Function(_SearchNamePersonagesEvent) then) =
+      __$SearchNamePersonagesEventCopyWithImpl<$Res>;
+  $Res call({String name});
+}
+
+/// @nodoc
+class __$SearchNamePersonagesEventCopyWithImpl<$Res>
+    extends _$PersonagesEventCopyWithImpl<$Res>
+    implements _$SearchNamePersonagesEventCopyWith<$Res> {
+  __$SearchNamePersonagesEventCopyWithImpl(_SearchNamePersonagesEvent _value,
+      $Res Function(_SearchNamePersonagesEvent) _then)
+      : super(_value, (v) => _then(v as _SearchNamePersonagesEvent));
+
+  @override
+  _SearchNamePersonagesEvent get _value =>
+      super._value as _SearchNamePersonagesEvent;
+
+  @override
+  $Res call({
+    Object name = freezed,
+  }) {
+    return _then(_SearchNamePersonagesEvent(
+      name: name == freezed ? _value.name : name as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_SearchNamePersonagesEvent implements _SearchNamePersonagesEvent {
+  const _$_SearchNamePersonagesEvent({@required this.name})
+      : assert(name != null);
+
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'PersonagesEvent.searchName(name: $name)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SearchNamePersonagesEvent &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
+
+  @JsonKey(ignore: true)
+  @override
+  _$SearchNamePersonagesEventCopyWith<_SearchNamePersonagesEvent>
+      get copyWith =>
+          __$SearchNamePersonagesEventCopyWithImpl<_SearchNamePersonagesEvent>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult selectedView(bool isGrid),
+    @required TResult searchName(String name),
+  }) {
+    assert(initial != null);
+    assert(selectedView != null);
+    assert(searchName != null);
+    return searchName(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult selectedView(bool isGrid),
+    TResult searchName(String name),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (searchName != null) {
+      return searchName(name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initial(_InitialPersonagesEvent value),
+    @required TResult selectedView(_SelectedViewPersonagesEvent value),
+    @required TResult searchName(_SearchNamePersonagesEvent value),
+  }) {
+    assert(initial != null);
+    assert(selectedView != null);
+    assert(searchName != null);
+    return searchName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_InitialPersonagesEvent value),
+    TResult selectedView(_SelectedViewPersonagesEvent value),
+    TResult searchName(_SearchNamePersonagesEvent value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (searchName != null) {
+      return searchName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SearchNamePersonagesEvent implements PersonagesEvent {
+  const factory _SearchNamePersonagesEvent({@required String name}) =
+      _$_SearchNamePersonagesEvent;
+
+  String get name;
+  @JsonKey(ignore: true)
+  _$SearchNamePersonagesEventCopyWith<_SearchNamePersonagesEvent> get copyWith;
 }
 
 /// @nodoc

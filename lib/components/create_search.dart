@@ -7,8 +7,10 @@ import 'package:rick_and_morty/theme/color_theme.dart';
 class CreateSearch extends StatelessWidget {
   final String titel;
   final bool sort;
+  final Function searchText;
 
-  CreateSearch({@required this.titel, @required this.sort});
+  CreateSearch(
+      {@required this.titel, @required this.sort, @required this.searchText});
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +32,8 @@ class CreateSearch extends StatelessWidget {
             width: MediaQuery.of(context).size.width / 1.41,
             child: TextField(
               style: Theme.of(context).textTheme.bodyText1.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-              ),
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
               decoration: InputDecoration(
                 hintStyle: TextStyle(color: ColorPalette.gray),
                 border: InputBorder.none,
@@ -41,6 +43,9 @@ class CreateSearch extends StatelessWidget {
                 ),
                 hintText: titel,
               ),
+              onChanged: (text) {
+                searchText(text);
+              },
             ),
           ),
           sort

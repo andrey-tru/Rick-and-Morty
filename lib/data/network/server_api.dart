@@ -18,8 +18,6 @@ class ServerApi {
   DioSettings _dioSettings;
   Dio _dio;
 
-  Map<String, dynamic> _request;
-
   Future<PersonagesModel> getPersonages() async {
     Response<String> response = await _dio.get(
       "/api/Characters/GetAll",
@@ -58,5 +56,29 @@ class ServerApi {
       queryParameters: {"id": id},
     );
     return episodeIdFromJson(response.toString());
+  }
+
+  Future<PersonagesModel> getPersonagesName(String name) async {
+    Response<String> response = await _dio.get(
+      "/api/Characters/Filter",
+      queryParameters: {"Name": name, "Status[]": "", "Gender[]": ""},
+    );
+    return personagesModelFromJson(response.toString());
+  }
+
+  Future<EpisodesModel> getEpisodesName(String name) async {
+    Response<String> response = await _dio.get(
+      "/api/Episodes/GetByName",
+      queryParameters: {"Name": name},
+    );
+    return episodesModelFromJson(response.toString());
+  }
+
+  Future<LocationsModel> getLocationsName(String name) async {
+    Response<String> response = await _dio.get(
+      "/api/Locations/Filter",
+      queryParameters: {"Name": name, "Status[]": "", "Gender[]": ""},
+    );
+    return locationsModelFromJson(response.toString());
   }
 }

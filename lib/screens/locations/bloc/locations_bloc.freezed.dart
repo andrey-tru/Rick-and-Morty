@@ -17,6 +17,13 @@ class _$LocationsEventTearOff {
   _InitialLocationsEvent initial() {
     return const _InitialLocationsEvent();
   }
+
+// ignore: unused_element
+  _SearchNameLocationsEvent searchName({@required String name}) {
+    return _SearchNameLocationsEvent(
+      name: name,
+    );
+  }
 }
 
 /// @nodoc
@@ -28,19 +35,23 @@ mixin _$LocationsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
+    @required TResult searchName(String name),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
+    TResult searchName(String name),
     @required TResult orElse(),
   });
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(_InitialLocationsEvent value),
+    @required TResult searchName(_SearchNameLocationsEvent value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(_InitialLocationsEvent value),
+    TResult searchName(_SearchNameLocationsEvent value),
     @required TResult orElse(),
   });
 }
@@ -102,8 +113,10 @@ class _$_InitialLocationsEvent implements _InitialLocationsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
+    @required TResult searchName(String name),
   }) {
     assert(initial != null);
+    assert(searchName != null);
     return initial();
   }
 
@@ -111,6 +124,7 @@ class _$_InitialLocationsEvent implements _InitialLocationsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
+    TResult searchName(String name),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -124,8 +138,10 @@ class _$_InitialLocationsEvent implements _InitialLocationsEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult initial(_InitialLocationsEvent value),
+    @required TResult searchName(_SearchNameLocationsEvent value),
   }) {
     assert(initial != null);
+    assert(searchName != null);
     return initial(this);
   }
 
@@ -133,6 +149,7 @@ class _$_InitialLocationsEvent implements _InitialLocationsEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult initial(_InitialLocationsEvent value),
+    TResult searchName(_SearchNameLocationsEvent value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -145,6 +162,127 @@ class _$_InitialLocationsEvent implements _InitialLocationsEvent {
 
 abstract class _InitialLocationsEvent implements LocationsEvent {
   const factory _InitialLocationsEvent() = _$_InitialLocationsEvent;
+}
+
+/// @nodoc
+abstract class _$SearchNameLocationsEventCopyWith<$Res> {
+  factory _$SearchNameLocationsEventCopyWith(_SearchNameLocationsEvent value,
+          $Res Function(_SearchNameLocationsEvent) then) =
+      __$SearchNameLocationsEventCopyWithImpl<$Res>;
+  $Res call({String name});
+}
+
+/// @nodoc
+class __$SearchNameLocationsEventCopyWithImpl<$Res>
+    extends _$LocationsEventCopyWithImpl<$Res>
+    implements _$SearchNameLocationsEventCopyWith<$Res> {
+  __$SearchNameLocationsEventCopyWithImpl(_SearchNameLocationsEvent _value,
+      $Res Function(_SearchNameLocationsEvent) _then)
+      : super(_value, (v) => _then(v as _SearchNameLocationsEvent));
+
+  @override
+  _SearchNameLocationsEvent get _value =>
+      super._value as _SearchNameLocationsEvent;
+
+  @override
+  $Res call({
+    Object name = freezed,
+  }) {
+    return _then(_SearchNameLocationsEvent(
+      name: name == freezed ? _value.name : name as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_SearchNameLocationsEvent implements _SearchNameLocationsEvent {
+  const _$_SearchNameLocationsEvent({@required this.name})
+      : assert(name != null);
+
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'LocationsEvent.searchName(name: $name)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SearchNameLocationsEvent &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
+
+  @JsonKey(ignore: true)
+  @override
+  _$SearchNameLocationsEventCopyWith<_SearchNameLocationsEvent> get copyWith =>
+      __$SearchNameLocationsEventCopyWithImpl<_SearchNameLocationsEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult searchName(String name),
+  }) {
+    assert(initial != null);
+    assert(searchName != null);
+    return searchName(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult searchName(String name),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (searchName != null) {
+      return searchName(name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initial(_InitialLocationsEvent value),
+    @required TResult searchName(_SearchNameLocationsEvent value),
+  }) {
+    assert(initial != null);
+    assert(searchName != null);
+    return searchName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_InitialLocationsEvent value),
+    TResult searchName(_SearchNameLocationsEvent value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (searchName != null) {
+      return searchName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SearchNameLocationsEvent implements LocationsEvent {
+  const factory _SearchNameLocationsEvent({@required String name}) =
+      _$_SearchNameLocationsEvent;
+
+  String get name;
+  @JsonKey(ignore: true)
+  _$SearchNameLocationsEventCopyWith<_SearchNameLocationsEvent> get copyWith;
 }
 
 /// @nodoc

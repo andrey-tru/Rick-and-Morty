@@ -12,12 +12,14 @@ part 'locations_bloc.freezed.dart';
 class LocationsBloc extends Bloc<LocationsEvent, LocationsState> {
   final _repository = Repository();
   LocationsModel locationsList;
+  LocationsModel searchName;
   LocationsBloc() : super(LocationsState.initial());
 
   @override
   Stream<LocationsState> mapEventToState(LocationsEvent event) async* {
     yield* event.map(
       initial: _mapInitialLocationsEvent,
+      searchName: _mapSearchNameLocationsEvent,
     );
   }
 
@@ -29,6 +31,17 @@ class LocationsBloc extends Bloc<LocationsEvent, LocationsState> {
       yield LocationsState.data(
         locationList: locationsList.data,
       );
+    } catch (e) {
+      yield LocationsState.failing(message: e.toString());
+    }
+  }
+
+  Stream<LocationsState> _mapSearchNameLocationsEvent(
+      _SearchNameLocationsEvent event) async* {
+    searchName = await _repository.getLocationsName(event.name);
+    yield LocationsState.loading();
+    try {
+      yield LocationsState.data(locationList: searchName.data);
     } catch (e) {
       yield LocationsState.failing(message: e.toString());
     }

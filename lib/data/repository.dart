@@ -33,4 +33,19 @@ class Repository {
     final response = await _serverApi.getEpisodeId(id);
     return response;
   }
+
+  Future<PersonagesModel> getPersonagesName(String name) async {
+    final response = await _serverApi.getPersonagesName(name);
+    return response;
+  }
+
+  Future<EpisodesModel> getEpisodesName(String name) async {
+    final response = await _serverApi.getEpisodesName(name);
+    return response;
+  }
+
+  Future<LocationsModel> getLocationsName(String name) async {
+    final response = await _serverApi.getLocationsName(name);
+    return response;
+  }
 }

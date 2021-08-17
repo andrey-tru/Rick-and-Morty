@@ -7,4 +7,8 @@ abstract class PersonagesEvent with _$PersonagesEvent {
   const factory PersonagesEvent.selectedView({
     @required bool isGrid,
   }) = _SelectedViewPersonagesEvent;
+
+  const factory PersonagesEvent.searchName({
+    @required String name,
+  }) = _SearchNamePersonagesEvent;
 }

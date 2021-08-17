@@ -20,6 +20,10 @@ class PersonagesScreen extends StatelessWidget {
               title: CreateSearch(
                 titel: 'Найти персонажа',
                 sort: true,
+                  searchText: (text) => {
+                    BlocProvider.of<PersonagesBloc>(context)
+                        .add(PersonagesEvent.searchName(name: text)),
+                  },
               ),
               bottom: PreferredSize(
                 preferredSize: Size.fromHeight(60),
