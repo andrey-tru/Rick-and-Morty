@@ -19,10 +19,8 @@ class _$EpisodesEventTearOff {
   }
 
 // ignore: unused_element
-  _SearchNameEpisodesEvent searchName(
-      {@required int seasonId, @required String name}) {
+  _SearchNameEpisodesEvent searchName({@required String name}) {
     return _SearchNameEpisodesEvent(
-      seasonId: seasonId,
       name: name,
     );
   }
@@ -37,12 +35,12 @@ mixin _$EpisodesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult searchName(int seasonId, String name),
+    @required TResult searchName(String name),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult searchName(int seasonId, String name),
+    TResult searchName(String name),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -115,7 +113,7 @@ class _$_InitialEpisodesEvent implements _InitialEpisodesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult searchName(int seasonId, String name),
+    @required TResult searchName(String name),
   }) {
     assert(initial != null);
     assert(searchName != null);
@@ -126,7 +124,7 @@ class _$_InitialEpisodesEvent implements _InitialEpisodesEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult searchName(int seasonId, String name),
+    TResult searchName(String name),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -171,7 +169,7 @@ abstract class _$SearchNameEpisodesEventCopyWith<$Res> {
   factory _$SearchNameEpisodesEventCopyWith(_SearchNameEpisodesEvent value,
           $Res Function(_SearchNameEpisodesEvent) then) =
       __$SearchNameEpisodesEventCopyWithImpl<$Res>;
-  $Res call({int seasonId, String name});
+  $Res call({String name});
 }
 
 /// @nodoc
@@ -188,11 +186,9 @@ class __$SearchNameEpisodesEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object seasonId = freezed,
     Object name = freezed,
   }) {
     return _then(_SearchNameEpisodesEvent(
-      seasonId: seasonId == freezed ? _value.seasonId : seasonId as int,
       name: name == freezed ? _value.name : name as String,
     ));
   }
@@ -200,37 +196,28 @@ class __$SearchNameEpisodesEventCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_SearchNameEpisodesEvent implements _SearchNameEpisodesEvent {
-  const _$_SearchNameEpisodesEvent(
-      {@required this.seasonId, @required this.name})
-      : assert(seasonId != null),
-        assert(name != null);
+  const _$_SearchNameEpisodesEvent({@required this.name})
+      : assert(name != null);
 
-  @override
-  final int seasonId;
   @override
   final String name;
 
   @override
   String toString() {
-    return 'EpisodesEvent.searchName(seasonId: $seasonId, name: $name)';
+    return 'EpisodesEvent.searchName(name: $name)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _SearchNameEpisodesEvent &&
-            (identical(other.seasonId, seasonId) ||
-                const DeepCollectionEquality()
-                    .equals(other.seasonId, seasonId)) &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(seasonId) ^
-      const DeepCollectionEquality().hash(name);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
 
   @JsonKey(ignore: true)
   @override
@@ -242,23 +229,23 @@ class _$_SearchNameEpisodesEvent implements _SearchNameEpisodesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult initial(),
-    @required TResult searchName(int seasonId, String name),
+    @required TResult searchName(String name),
   }) {
     assert(initial != null);
     assert(searchName != null);
-    return searchName(seasonId, name);
+    return searchName(name);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult initial(),
-    TResult searchName(int seasonId, String name),
+    TResult searchName(String name),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (searchName != null) {
-      return searchName(seasonId, name);
+      return searchName(name);
     }
     return orElse();
   }
@@ -290,11 +277,9 @@ class _$_SearchNameEpisodesEvent implements _SearchNameEpisodesEvent {
 }
 
 abstract class _SearchNameEpisodesEvent implements EpisodesEvent {
-  const factory _SearchNameEpisodesEvent(
-      {@required int seasonId,
-      @required String name}) = _$_SearchNameEpisodesEvent;
+  const factory _SearchNameEpisodesEvent({@required String name}) =
+      _$_SearchNameEpisodesEvent;
 
-  int get seasonId;
   String get name;
   @JsonKey(ignore: true)
   _$SearchNameEpisodesEventCopyWith<_SearchNameEpisodesEvent> get copyWith;
@@ -306,7 +291,7 @@ class _$EpisodesStateTearOff {
 
 // ignore: unused_element
   DataEpisodesState data(
-      {@required List<int> season, @required List<Episode> episodeList}) {
+      {@required List<int> season, @required List<List<Episode>> episodeList}) {
     return DataEpisodesState(
       season: season,
       episodeList: episodeList,
@@ -339,14 +324,14 @@ const $EpisodesState = _$EpisodesStateTearOff();
 mixin _$EpisodesState {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<int> season, List<Episode> episodeList),
+    @required TResult data(List<int> season, List<List<Episode>> episodeList),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult failing(String message),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<int> season, List<Episode> episodeList),
+    TResult data(List<int> season, List<List<Episode>> episodeList),
     TResult initial(),
     TResult loading(),
     TResult failing(String message),
@@ -391,7 +376,7 @@ abstract class $DataEpisodesStateCopyWith<$Res> {
   factory $DataEpisodesStateCopyWith(
           DataEpisodesState value, $Res Function(DataEpisodesState) then) =
       _$DataEpisodesStateCopyWithImpl<$Res>;
-  $Res call({List<int> season, List<Episode> episodeList});
+  $Res call({List<int> season, List<List<Episode>> episodeList});
 }
 
 /// @nodoc
@@ -414,7 +399,7 @@ class _$DataEpisodesStateCopyWithImpl<$Res>
       season: season == freezed ? _value.season : season as List<int>,
       episodeList: episodeList == freezed
           ? _value.episodeList
-          : episodeList as List<Episode>,
+          : episodeList as List<List<Episode>>,
     ));
   }
 }
@@ -428,7 +413,7 @@ class _$DataEpisodesState implements DataEpisodesState {
   @override
   final List<int> season;
   @override
-  final List<Episode> episodeList;
+  final List<List<Episode>> episodeList;
 
   @override
   String toString() {
@@ -460,7 +445,7 @@ class _$DataEpisodesState implements DataEpisodesState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<int> season, List<Episode> episodeList),
+    @required TResult data(List<int> season, List<List<Episode>> episodeList),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult failing(String message),
@@ -475,7 +460,7 @@ class _$DataEpisodesState implements DataEpisodesState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<int> season, List<Episode> episodeList),
+    TResult data(List<int> season, List<List<Episode>> episodeList),
     TResult initial(),
     TResult loading(),
     TResult failing(String message),
@@ -523,10 +508,10 @@ class _$DataEpisodesState implements DataEpisodesState {
 abstract class DataEpisodesState implements EpisodesState {
   const factory DataEpisodesState(
       {@required List<int> season,
-      @required List<Episode> episodeList}) = _$DataEpisodesState;
+      @required List<List<Episode>> episodeList}) = _$DataEpisodesState;
 
   List<int> get season;
-  List<Episode> get episodeList;
+  List<List<Episode>> get episodeList;
   @JsonKey(ignore: true)
   $DataEpisodesStateCopyWith<DataEpisodesState> get copyWith;
 }
@@ -570,7 +555,7 @@ class _$_InitialEpisodesState implements _InitialEpisodesState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<int> season, List<Episode> episodeList),
+    @required TResult data(List<int> season, List<List<Episode>> episodeList),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult failing(String message),
@@ -585,7 +570,7 @@ class _$_InitialEpisodesState implements _InitialEpisodesState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<int> season, List<Episode> episodeList),
+    TResult data(List<int> season, List<List<Episode>> episodeList),
     TResult initial(),
     TResult loading(),
     TResult failing(String message),
@@ -673,7 +658,7 @@ class _$_LoadingEpisodesState implements _LoadingEpisodesState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<int> season, List<Episode> episodeList),
+    @required TResult data(List<int> season, List<List<Episode>> episodeList),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult failing(String message),
@@ -688,7 +673,7 @@ class _$_LoadingEpisodesState implements _LoadingEpisodesState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<int> season, List<Episode> episodeList),
+    TResult data(List<int> season, List<List<Episode>> episodeList),
     TResult initial(),
     TResult loading(),
     TResult failing(String message),
@@ -800,7 +785,7 @@ class _$_FailingEpisodesState implements _FailingEpisodesState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<int> season, List<Episode> episodeList),
+    @required TResult data(List<int> season, List<List<Episode>> episodeList),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult failing(String message),
@@ -815,7 +800,7 @@ class _$_FailingEpisodesState implements _FailingEpisodesState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<int> season, List<Episode> episodeList),
+    TResult data(List<int> season, List<List<Episode>> episodeList),
     TResult initial(),
     TResult loading(),
     TResult failing(String message),

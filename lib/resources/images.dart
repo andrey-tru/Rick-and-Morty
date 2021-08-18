@@ -16,4 +16,7 @@ class Images {
   static const String mnait = 'assets/images/mnait.png';
   static const String park1 = 'assets/images/park1.png';
   static const String zeml = 'assets/images/zeml.png';
+  static const String episode = 'assets/images/episode.png';
+  static const String location = 'assets/images/location.png';
+  static const String personage = 'assets/images/personage.png';
 }

@@ -4,7 +4,7 @@ part of 'episodes_bloc.dart';
 abstract class EpisodesState with _$EpisodesState {
   const factory EpisodesState.data({
     @required final List<int> season,
-    @required final List<Episode> episodeList,
+    @required final List<List<Episode>> episodeList,
   }) = DataEpisodesState;
 
   const factory EpisodesState.initial() = _InitialEpisodesState;

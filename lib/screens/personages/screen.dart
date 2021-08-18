@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/components/create_search.dart';
+import 'package:rick_and_morty/resources/images.dart';
 import 'package:rick_and_morty/screens/personages/bloc/personages_bloc.dart';
 import 'package:rick_and_morty/screens/personages/widgets/personages_grid.dart';
 import 'package:rick_and_morty/screens/personages/widgets/personages_list.dart';
@@ -38,7 +39,8 @@ class PersonagesScreen extends StatelessWidget {
                 ),
               ),
             ),
-            body: Container(
+            body: _data.personagesList.length != 0
+                ? Container(
               child: _data.isGrid
                   ? PersonagesGrid(
                       personageList: _data.personagesList,
@@ -46,7 +48,27 @@ class PersonagesScreen extends StatelessWidget {
                   : PersonagesList(
                       personageList: _data.personagesList,
                     ),
-            ),
+            )
+                : Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          Images.personage,
+                          height: 250,
+                        ),
+                        SizedBox(
+                          height: 45,
+                        ),
+                        Text(
+                          'Персонаж с таким именем не найден',
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                      ],
+                    ),
+                ),
           ),
           orElse: () => SizedBox.shrink(),
         );

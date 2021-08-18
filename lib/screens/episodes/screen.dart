@@ -5,8 +5,6 @@ import 'package:rick_and_morty/screens/episodes/bloc/episodes_bloc.dart';
 import 'package:rick_and_morty/screens/episodes/widgets/tabbar.dart';
 
 class EpisodesScreen extends StatelessWidget {
-  String text = ' ';
-  int index = 1;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<EpisodesBloc, EpisodesState>(
@@ -23,9 +21,8 @@ class EpisodesScreen extends StatelessWidget {
                   titel: 'Найти эпизод',
                   sort: false,
                   searchText: (text) => {
-                    this.text = text,
-                    BlocProvider.of<EpisodesBloc>(context).add(
-                        EpisodesEvent.searchName(seasonId: index, name: text)),
+                    BlocProvider.of<EpisodesBloc>(context)
+                        .add(EpisodesEvent.searchName(name: text)),
                   },
                 ),
                 bottom: TabBar(
@@ -40,8 +37,7 @@ class EpisodesScreen extends StatelessWidget {
               ),
               body: Container(
                 child: TabBarView(
-                  children: getTabBarView(
-                      _data.season, text, (index) => {this.index = index, print(text)}),
+                  children: getTabBarView(_data.season, _data.episodeList),
                 ),
               ),
             ),

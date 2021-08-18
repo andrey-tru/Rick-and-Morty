@@ -12,7 +12,6 @@ part 'personages_bloc.freezed.dart';
 class PersonagesBloc extends Bloc<PersonagesEvent, PersonagesState> {
   final _repository = Repository();
   PersonagesModel personagesList;
-  PersonagesModel searchName;
   bool isGrid = false;
 
   PersonagesBloc() : super(PersonagesState.initial());
@@ -52,11 +51,11 @@ class PersonagesBloc extends Bloc<PersonagesEvent, PersonagesState> {
 
   Stream<PersonagesState> _mapSearchNamePersonagesEvent(
       _SearchNamePersonagesEvent event) async* {
-    searchName = await _repository.getPersonagesName(event.name);
+    personagesList = await _repository.getPersonagesName(event.name);
     yield PersonagesState.loading();
     try {
       yield PersonagesState.data(
-        personagesList: searchName.data,
+        personagesList: personagesList.data,
         isGrid: isGrid,
       );
     } catch (e) {

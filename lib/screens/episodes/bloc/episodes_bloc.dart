@@ -15,8 +15,7 @@ class EpisodesBloc extends Bloc<EpisodesEvent, EpisodesState> {
   int seasonId = 1;
   EpisodesModel episodesList;
   List<Episode> episodesSeason;
-  EpisodesModel searchName;
-  List<Episode> searchNameSeason;
+  List<List<Episode>> episodesSeasonList;
 
   EpisodesBloc() : super(EpisodesState.initial());
 
@@ -30,24 +29,32 @@ class EpisodesBloc extends Bloc<EpisodesEvent, EpisodesState> {
 
   Stream<EpisodesState> _mapInitialEpisodesEvent(
       _InitialEpisodesEvent event) async* {
+    episodesSeasonList = [];
     episodesList = await _repository.getEpisodes();
-    episodesSeason = getEpisodesSeason(seasonId, episodesList.data);
+    for (var i in season) {
+      episodesSeason = getEpisodesSeason(i, episodesList.data);
+      episodesSeasonList.add(episodesSeason);
+    }
     yield EpisodesState.loading();
     try {
-      yield EpisodesState.data(season: season, episodeList: episodesSeason);
+      yield EpisodesState.data(season: season, episodeList: episodesSeasonList);
     } catch (e) {
       yield EpisodesState.failing(message: e.toString());
     }
   }
-  
 
   Stream<EpisodesState> _mapSearchNameEpisodesEvent(
       _SearchNameEpisodesEvent event) async* {
-    searchName = await _repository.getEpisodesName(event.name);
-    searchNameSeason = getEpisodesSeason(event.seasonId, searchName.data);
+    episodesSeasonList = [];
+    episodesList = await _repository.getEpisodesName(event.name);
+    for (var i in season) {
+      episodesSeason = getEpisodesSeason(i, episodesList.data);
+      episodesSeasonList.add(episodesSeason);
+    }
     yield EpisodesState.loading();
     try {
-      yield EpisodesState.data(season: season, episodeList: searchNameSeason);
+      yield EpisodesState.data(
+          season: season, episodeList: episodesSeasonList);
     } catch (e) {
       yield EpisodesState.failing(message: e.toString());
     }

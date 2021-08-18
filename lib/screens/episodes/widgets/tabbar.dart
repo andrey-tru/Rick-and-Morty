@@ -16,16 +16,15 @@ getTabBar(List season, TextStyle style) {
   return tabs;
 }
 
-List<Widget> getTabBarView(List season, String name, Function index) {
+List<Widget> getTabBarView(List season, List episodeList) {
   List<Widget> tabs = [];
   for (var i in season) {
     tabs.add(
       EpisodesList(
-        seasonId: i,
-        name: name,
+        seasonId: i-1,
+        episodeList: episodeList,
       ),
     );
-    index(i);
   }
   return tabs;
 }
