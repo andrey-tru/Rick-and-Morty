@@ -14,8 +14,10 @@ class _$LocationsEventTearOff {
   const _$LocationsEventTearOff();
 
 // ignore: unused_element
-  _InitialLocationsEvent initial() {
-    return const _InitialLocationsEvent();
+  _InitialLocationsEvent initial({@required bool isLoading}) {
+    return _InitialLocationsEvent(
+      isLoading: isLoading,
+    );
   }
 
 // ignore: unused_element
@@ -34,12 +36,12 @@ const $LocationsEvent = _$LocationsEventTearOff();
 mixin _$LocationsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult initial(),
+    @required TResult initial(bool isLoading),
     @required TResult searchName(String name),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
+    TResult initial(bool isLoading),
     TResult searchName(String name),
     @required TResult orElse(),
   });
@@ -78,6 +80,7 @@ abstract class _$InitialLocationsEventCopyWith<$Res> {
   factory _$InitialLocationsEventCopyWith(_InitialLocationsEvent value,
           $Res Function(_InitialLocationsEvent) then) =
       __$InitialLocationsEventCopyWithImpl<$Res>;
+  $Res call({bool isLoading});
 }
 
 /// @nodoc
@@ -90,46 +93,70 @@ class __$InitialLocationsEventCopyWithImpl<$Res>
 
   @override
   _InitialLocationsEvent get _value => super._value as _InitialLocationsEvent;
+
+  @override
+  $Res call({
+    Object isLoading = freezed,
+  }) {
+    return _then(_InitialLocationsEvent(
+      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_InitialLocationsEvent implements _InitialLocationsEvent {
-  const _$_InitialLocationsEvent();
+  const _$_InitialLocationsEvent({@required this.isLoading})
+      : assert(isLoading != null);
+
+  @override
+  final bool isLoading;
 
   @override
   String toString() {
-    return 'LocationsEvent.initial()';
+    return 'LocationsEvent.initial(isLoading: $isLoading)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _InitialLocationsEvent);
+    return identical(this, other) ||
+        (other is _InitialLocationsEvent &&
+            (identical(other.isLoading, isLoading) ||
+                const DeepCollectionEquality()
+                    .equals(other.isLoading, isLoading)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(isLoading);
+
+  @JsonKey(ignore: true)
+  @override
+  _$InitialLocationsEventCopyWith<_InitialLocationsEvent> get copyWith =>
+      __$InitialLocationsEventCopyWithImpl<_InitialLocationsEvent>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult initial(),
+    @required TResult initial(bool isLoading),
     @required TResult searchName(String name),
   }) {
     assert(initial != null);
     assert(searchName != null);
-    return initial();
+    return initial(isLoading);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
+    TResult initial(bool isLoading),
     TResult searchName(String name),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
-      return initial();
+      return initial(isLoading);
     }
     return orElse();
   }
@@ -161,7 +188,12 @@ class _$_InitialLocationsEvent implements _InitialLocationsEvent {
 }
 
 abstract class _InitialLocationsEvent implements LocationsEvent {
-  const factory _InitialLocationsEvent() = _$_InitialLocationsEvent;
+  const factory _InitialLocationsEvent({@required bool isLoading}) =
+      _$_InitialLocationsEvent;
+
+  bool get isLoading;
+  @JsonKey(ignore: true)
+  _$InitialLocationsEventCopyWith<_InitialLocationsEvent> get copyWith;
 }
 
 /// @nodoc
@@ -228,7 +260,7 @@ class _$_SearchNameLocationsEvent implements _SearchNameLocationsEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult initial(),
+    @required TResult initial(bool isLoading),
     @required TResult searchName(String name),
   }) {
     assert(initial != null);
@@ -239,7 +271,7 @@ class _$_SearchNameLocationsEvent implements _SearchNameLocationsEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
+    TResult initial(bool isLoading),
     TResult searchName(String name),
     @required TResult orElse(),
   }) {
@@ -290,9 +322,14 @@ class _$LocationsStateTearOff {
   const _$LocationsStateTearOff();
 
 // ignore: unused_element
-  DataLocationsState data({@required List<Location> locationList}) {
+  DataLocationsState data(
+      {@required List<Location> locationList,
+      @required bool isLoading,
+      @required int totalRecords}) {
     return DataLocationsState(
       locationList: locationList,
+      isLoading: isLoading,
+      totalRecords: totalRecords,
     );
   }
 
@@ -322,14 +359,16 @@ const $LocationsState = _$LocationsStateTearOff();
 mixin _$LocationsState {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<Location> locationList),
+    @required
+        TResult data(
+            List<Location> locationList, bool isLoading, int totalRecords),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult failing(String message),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<Location> locationList),
+    TResult data(List<Location> locationList, bool isLoading, int totalRecords),
     TResult initial(),
     TResult loading(),
     TResult failing(String message),
@@ -374,7 +413,7 @@ abstract class $DataLocationsStateCopyWith<$Res> {
   factory $DataLocationsStateCopyWith(
           DataLocationsState value, $Res Function(DataLocationsState) then) =
       _$DataLocationsStateCopyWithImpl<$Res>;
-  $Res call({List<Location> locationList});
+  $Res call({List<Location> locationList, bool isLoading, int totalRecords});
 }
 
 /// @nodoc
@@ -391,26 +430,40 @@ class _$DataLocationsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object locationList = freezed,
+    Object isLoading = freezed,
+    Object totalRecords = freezed,
   }) {
     return _then(DataLocationsState(
       locationList: locationList == freezed
           ? _value.locationList
           : locationList as List<Location>,
+      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
+      totalRecords:
+          totalRecords == freezed ? _value.totalRecords : totalRecords as int,
     ));
   }
 }
 
 /// @nodoc
 class _$DataLocationsState implements DataLocationsState {
-  const _$DataLocationsState({@required this.locationList})
-      : assert(locationList != null);
+  const _$DataLocationsState(
+      {@required this.locationList,
+      @required this.isLoading,
+      @required this.totalRecords})
+      : assert(locationList != null),
+        assert(isLoading != null),
+        assert(totalRecords != null);
 
   @override
   final List<Location> locationList;
+  @override
+  final bool isLoading;
+  @override
+  final int totalRecords;
 
   @override
   String toString() {
-    return 'LocationsState.data(locationList: $locationList)';
+    return 'LocationsState.data(locationList: $locationList, isLoading: $isLoading, totalRecords: $totalRecords)';
   }
 
   @override
@@ -419,12 +472,21 @@ class _$DataLocationsState implements DataLocationsState {
         (other is DataLocationsState &&
             (identical(other.locationList, locationList) ||
                 const DeepCollectionEquality()
-                    .equals(other.locationList, locationList)));
+                    .equals(other.locationList, locationList)) &&
+            (identical(other.isLoading, isLoading) ||
+                const DeepCollectionEquality()
+                    .equals(other.isLoading, isLoading)) &&
+            (identical(other.totalRecords, totalRecords) ||
+                const DeepCollectionEquality()
+                    .equals(other.totalRecords, totalRecords)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(locationList);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(locationList) ^
+      const DeepCollectionEquality().hash(isLoading) ^
+      const DeepCollectionEquality().hash(totalRecords);
 
   @JsonKey(ignore: true)
   @override
@@ -434,7 +496,9 @@ class _$DataLocationsState implements DataLocationsState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<Location> locationList),
+    @required
+        TResult data(
+            List<Location> locationList, bool isLoading, int totalRecords),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult failing(String message),
@@ -443,13 +507,13 @@ class _$DataLocationsState implements DataLocationsState {
     assert(initial != null);
     assert(loading != null);
     assert(failing != null);
-    return data(locationList);
+    return data(locationList, isLoading, totalRecords);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<Location> locationList),
+    TResult data(List<Location> locationList, bool isLoading, int totalRecords),
     TResult initial(),
     TResult loading(),
     TResult failing(String message),
@@ -457,7 +521,7 @@ class _$DataLocationsState implements DataLocationsState {
   }) {
     assert(orElse != null);
     if (data != null) {
-      return data(locationList);
+      return data(locationList, isLoading, totalRecords);
     }
     return orElse();
   }
@@ -495,10 +559,14 @@ class _$DataLocationsState implements DataLocationsState {
 }
 
 abstract class DataLocationsState implements LocationsState {
-  const factory DataLocationsState({@required List<Location> locationList}) =
-      _$DataLocationsState;
+  const factory DataLocationsState(
+      {@required List<Location> locationList,
+      @required bool isLoading,
+      @required int totalRecords}) = _$DataLocationsState;
 
   List<Location> get locationList;
+  bool get isLoading;
+  int get totalRecords;
   @JsonKey(ignore: true)
   $DataLocationsStateCopyWith<DataLocationsState> get copyWith;
 }
@@ -542,7 +610,9 @@ class _$_InitialLocationsState implements _InitialLocationsState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<Location> locationList),
+    @required
+        TResult data(
+            List<Location> locationList, bool isLoading, int totalRecords),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult failing(String message),
@@ -557,7 +627,7 @@ class _$_InitialLocationsState implements _InitialLocationsState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<Location> locationList),
+    TResult data(List<Location> locationList, bool isLoading, int totalRecords),
     TResult initial(),
     TResult loading(),
     TResult failing(String message),
@@ -645,7 +715,9 @@ class _$_LoadingLocationsState implements _LoadingLocationsState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<Location> locationList),
+    @required
+        TResult data(
+            List<Location> locationList, bool isLoading, int totalRecords),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult failing(String message),
@@ -660,7 +732,7 @@ class _$_LoadingLocationsState implements _LoadingLocationsState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<Location> locationList),
+    TResult data(List<Location> locationList, bool isLoading, int totalRecords),
     TResult initial(),
     TResult loading(),
     TResult failing(String message),
@@ -772,7 +844,9 @@ class _$_FailingLocationsState implements _FailingLocationsState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<Location> locationList),
+    @required
+        TResult data(
+            List<Location> locationList, bool isLoading, int totalRecords),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult failing(String message),
@@ -787,7 +861,7 @@ class _$_FailingLocationsState implements _FailingLocationsState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<Location> locationList),
+    TResult data(List<Location> locationList, bool isLoading, int totalRecords),
     TResult initial(),
     TResult loading(),
     TResult failing(String message),

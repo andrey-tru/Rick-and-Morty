@@ -28,11 +28,11 @@ class MyApp extends StatelessWidget {
             providers: [
               BlocProvider(
                 create: (BuildContext context) =>
-                    PersonagesBloc()..add(PersonagesEvent.initial()),
+                    PersonagesBloc()..add(PersonagesEvent.initial(isLoading: true)),
               ),
               BlocProvider(
                 create: (BuildContext context) =>
-                    LocationsBloc()..add(LocationsEvent.initial()),
+                    LocationsBloc()..add(LocationsEvent.initial(isLoading: true)),
               ),
               BlocProvider(
                 create: (BuildContext context) =>

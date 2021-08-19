@@ -11,7 +11,11 @@ part 'locations_bloc.freezed.dart';
 
 class LocationsBloc extends Bloc<LocationsEvent, LocationsState> {
   final _repository = Repository();
-  LocationsModel locationsList;
+  LocationsModel locationsItem;
+  List<Location> locationsList;
+  int pageNumber = 1;
+  int pageSize = 3;
+  bool isLoading = true;
   LocationsBloc() : super(LocationsState.initial());
 
   @override
@@ -24,11 +28,22 @@ class LocationsBloc extends Bloc<LocationsEvent, LocationsState> {
 
   Stream<LocationsState> _mapInitialLocationsEvent(
       _InitialLocationsEvent event) async* {
-    locationsList = await _repository.getLocations();
+    locationsItem = await _repository.getLocations(pageNumber, pageSize);
     yield LocationsState.loading();
     try {
+      if (locationsList == null) {
+        locationsList = locationsItem.data;
+      } else {
+        locationsList.addAll(locationsItem.data);
+      }
+      pageNumber = locationsItem.nextPage;
+      if (locationsItem.data.isNotEmpty) {
+        isLoading = !event.isLoading;
+      }
       yield LocationsState.data(
-        locationList: locationsList.data,
+        locationList: locationsList,
+        isLoading: isLoading,
+        totalRecords: locationsItem.totalRecords, 
       );
     } catch (e) {
       yield LocationsState.failing(message: e.toString());
@@ -37,10 +52,14 @@ class LocationsBloc extends Bloc<LocationsEvent, LocationsState> {
 
   Stream<LocationsState> _mapSearchNameLocationsEvent(
       _SearchNameLocationsEvent event) async* {
-    locationsList = await _repository.getLocationsName(event.name);
+    locationsItem = await _repository.getLocationsName(event.name);
     yield LocationsState.loading();
     try {
-      yield LocationsState.data(locationList: locationsList.data);
+      yield LocationsState.data(
+        locationList: locationsItem.data,
+        isLoading: isLoading,
+        totalRecords: locationsItem.totalRecords, 
+      );
     } catch (e) {
       yield LocationsState.failing(message: e.toString());
     }

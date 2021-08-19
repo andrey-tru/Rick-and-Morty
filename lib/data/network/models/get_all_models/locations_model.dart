@@ -8,6 +8,8 @@ String locationsModelToJson(LocationsModel data) => json.encode(data.toJson());
 class LocationsModel {
   LocationsModel({
     this.totalRecords,
+    this.pages,
+    this.nextPage,
     this.succeeded,
     this.message,
     this.error,
@@ -15,6 +17,8 @@ class LocationsModel {
   });
 
   final int totalRecords;
+  final int pages;
+  final int nextPage;
   final bool succeeded;
   final dynamic message;
   final dynamic error;
@@ -22,14 +26,19 @@ class LocationsModel {
 
   factory LocationsModel.fromJson(Map<String, dynamic> json) => LocationsModel(
         totalRecords: json["totalRecords"],
+        pages: json["pages"],
+        nextPage: json["nextPage"],
         succeeded: json["succeeded"],
         message: json["message"],
         error: json["error"],
-        data: List<Location>.from(json["data"].map((x) => Location.fromJson(x))),
+        data:
+            List<Location>.from(json["data"].map((x) => Location.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "totalRecords": totalRecords,
+        "pages": pages,
+        "nextPage": nextPage,
         "succeeded": succeeded,
         "message": message,
         "error": error,

@@ -14,8 +14,10 @@ class _$PersonagesEventTearOff {
   const _$PersonagesEventTearOff();
 
 // ignore: unused_element
-  _InitialPersonagesEvent initial() {
-    return const _InitialPersonagesEvent();
+  _InitialPersonagesEvent initial({@required bool isLoading}) {
+    return _InitialPersonagesEvent(
+      isLoading: isLoading,
+    );
   }
 
 // ignore: unused_element
@@ -41,13 +43,13 @@ const $PersonagesEvent = _$PersonagesEventTearOff();
 mixin _$PersonagesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult initial(),
+    @required TResult initial(bool isLoading),
     @required TResult selectedView(bool isGrid),
     @required TResult searchName(String name),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
+    TResult initial(bool isLoading),
     TResult selectedView(bool isGrid),
     TResult searchName(String name),
     @required TResult orElse(),
@@ -89,6 +91,7 @@ abstract class _$InitialPersonagesEventCopyWith<$Res> {
   factory _$InitialPersonagesEventCopyWith(_InitialPersonagesEvent value,
           $Res Function(_InitialPersonagesEvent) then) =
       __$InitialPersonagesEventCopyWithImpl<$Res>;
+  $Res call({bool isLoading});
 }
 
 /// @nodoc
@@ -101,49 +104,73 @@ class __$InitialPersonagesEventCopyWithImpl<$Res>
 
   @override
   _InitialPersonagesEvent get _value => super._value as _InitialPersonagesEvent;
+
+  @override
+  $Res call({
+    Object isLoading = freezed,
+  }) {
+    return _then(_InitialPersonagesEvent(
+      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_InitialPersonagesEvent implements _InitialPersonagesEvent {
-  const _$_InitialPersonagesEvent();
+  const _$_InitialPersonagesEvent({@required this.isLoading})
+      : assert(isLoading != null);
+
+  @override
+  final bool isLoading;
 
   @override
   String toString() {
-    return 'PersonagesEvent.initial()';
+    return 'PersonagesEvent.initial(isLoading: $isLoading)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _InitialPersonagesEvent);
+    return identical(this, other) ||
+        (other is _InitialPersonagesEvent &&
+            (identical(other.isLoading, isLoading) ||
+                const DeepCollectionEquality()
+                    .equals(other.isLoading, isLoading)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(isLoading);
+
+  @JsonKey(ignore: true)
+  @override
+  _$InitialPersonagesEventCopyWith<_InitialPersonagesEvent> get copyWith =>
+      __$InitialPersonagesEventCopyWithImpl<_InitialPersonagesEvent>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult initial(),
+    @required TResult initial(bool isLoading),
     @required TResult selectedView(bool isGrid),
     @required TResult searchName(String name),
   }) {
     assert(initial != null);
     assert(selectedView != null);
     assert(searchName != null);
-    return initial();
+    return initial(isLoading);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
+    TResult initial(bool isLoading),
     TResult selectedView(bool isGrid),
     TResult searchName(String name),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
-      return initial();
+      return initial(isLoading);
     }
     return orElse();
   }
@@ -178,7 +205,12 @@ class _$_InitialPersonagesEvent implements _InitialPersonagesEvent {
 }
 
 abstract class _InitialPersonagesEvent implements PersonagesEvent {
-  const factory _InitialPersonagesEvent() = _$_InitialPersonagesEvent;
+  const factory _InitialPersonagesEvent({@required bool isLoading}) =
+      _$_InitialPersonagesEvent;
+
+  bool get isLoading;
+  @JsonKey(ignore: true)
+  _$InitialPersonagesEventCopyWith<_InitialPersonagesEvent> get copyWith;
 }
 
 /// @nodoc
@@ -247,7 +279,7 @@ class _$_SelectedViewPersonagesEvent implements _SelectedViewPersonagesEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult initial(),
+    @required TResult initial(bool isLoading),
     @required TResult selectedView(bool isGrid),
     @required TResult searchName(String name),
   }) {
@@ -260,7 +292,7 @@ class _$_SelectedViewPersonagesEvent implements _SelectedViewPersonagesEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
+    TResult initial(bool isLoading),
     TResult selectedView(bool isGrid),
     TResult searchName(String name),
     @required TResult orElse(),
@@ -376,7 +408,7 @@ class _$_SearchNamePersonagesEvent implements _SearchNamePersonagesEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult initial(),
+    @required TResult initial(bool isLoading),
     @required TResult selectedView(bool isGrid),
     @required TResult searchName(String name),
   }) {
@@ -389,7 +421,7 @@ class _$_SearchNamePersonagesEvent implements _SearchNamePersonagesEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
+    TResult initial(bool isLoading),
     TResult selectedView(bool isGrid),
     TResult searchName(String name),
     @required TResult orElse(),
@@ -445,10 +477,15 @@ class _$PersonagesStateTearOff {
 
 // ignore: unused_element
   DataPersonagesState data(
-      {@required List<Personage> personagesList, @required bool isGrid}) {
+      {@required List<Personage> personagesList,
+      @required bool isGrid,
+      @required bool isLoading,
+      @required int totalRecords}) {
     return DataPersonagesState(
       personagesList: personagesList,
       isGrid: isGrid,
+      isLoading: isLoading,
+      totalRecords: totalRecords,
     );
   }
 
@@ -478,14 +515,17 @@ const $PersonagesState = _$PersonagesStateTearOff();
 mixin _$PersonagesState {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<Personage> personagesList, bool isGrid),
+    @required
+        TResult data(List<Personage> personagesList, bool isGrid,
+            bool isLoading, int totalRecords),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult failing(String message),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<Personage> personagesList, bool isGrid),
+    TResult data(List<Personage> personagesList, bool isGrid, bool isLoading,
+        int totalRecords),
     TResult initial(),
     TResult loading(),
     TResult failing(String message),
@@ -530,7 +570,11 @@ abstract class $DataPersonagesStateCopyWith<$Res> {
   factory $DataPersonagesStateCopyWith(
           DataPersonagesState value, $Res Function(DataPersonagesState) then) =
       _$DataPersonagesStateCopyWithImpl<$Res>;
-  $Res call({List<Personage> personagesList, bool isGrid});
+  $Res call(
+      {List<Personage> personagesList,
+      bool isGrid,
+      bool isLoading,
+      int totalRecords});
 }
 
 /// @nodoc
@@ -548,12 +592,17 @@ class _$DataPersonagesStateCopyWithImpl<$Res>
   $Res call({
     Object personagesList = freezed,
     Object isGrid = freezed,
+    Object isLoading = freezed,
+    Object totalRecords = freezed,
   }) {
     return _then(DataPersonagesState(
       personagesList: personagesList == freezed
           ? _value.personagesList
           : personagesList as List<Personage>,
       isGrid: isGrid == freezed ? _value.isGrid : isGrid as bool,
+      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
+      totalRecords:
+          totalRecords == freezed ? _value.totalRecords : totalRecords as int,
     ));
   }
 }
@@ -561,18 +610,27 @@ class _$DataPersonagesStateCopyWithImpl<$Res>
 /// @nodoc
 class _$DataPersonagesState implements DataPersonagesState {
   const _$DataPersonagesState(
-      {@required this.personagesList, @required this.isGrid})
+      {@required this.personagesList,
+      @required this.isGrid,
+      @required this.isLoading,
+      @required this.totalRecords})
       : assert(personagesList != null),
-        assert(isGrid != null);
+        assert(isGrid != null),
+        assert(isLoading != null),
+        assert(totalRecords != null);
 
   @override
   final List<Personage> personagesList;
   @override
   final bool isGrid;
+  @override
+  final bool isLoading;
+  @override
+  final int totalRecords;
 
   @override
   String toString() {
-    return 'PersonagesState.data(personagesList: $personagesList, isGrid: $isGrid)';
+    return 'PersonagesState.data(personagesList: $personagesList, isGrid: $isGrid, isLoading: $isLoading, totalRecords: $totalRecords)';
   }
 
   @override
@@ -583,14 +641,22 @@ class _$DataPersonagesState implements DataPersonagesState {
                 const DeepCollectionEquality()
                     .equals(other.personagesList, personagesList)) &&
             (identical(other.isGrid, isGrid) ||
-                const DeepCollectionEquality().equals(other.isGrid, isGrid)));
+                const DeepCollectionEquality().equals(other.isGrid, isGrid)) &&
+            (identical(other.isLoading, isLoading) ||
+                const DeepCollectionEquality()
+                    .equals(other.isLoading, isLoading)) &&
+            (identical(other.totalRecords, totalRecords) ||
+                const DeepCollectionEquality()
+                    .equals(other.totalRecords, totalRecords)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(personagesList) ^
-      const DeepCollectionEquality().hash(isGrid);
+      const DeepCollectionEquality().hash(isGrid) ^
+      const DeepCollectionEquality().hash(isLoading) ^
+      const DeepCollectionEquality().hash(totalRecords);
 
   @JsonKey(ignore: true)
   @override
@@ -600,7 +666,9 @@ class _$DataPersonagesState implements DataPersonagesState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<Personage> personagesList, bool isGrid),
+    @required
+        TResult data(List<Personage> personagesList, bool isGrid,
+            bool isLoading, int totalRecords),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult failing(String message),
@@ -609,13 +677,14 @@ class _$DataPersonagesState implements DataPersonagesState {
     assert(initial != null);
     assert(loading != null);
     assert(failing != null);
-    return data(personagesList, isGrid);
+    return data(personagesList, isGrid, isLoading, totalRecords);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<Personage> personagesList, bool isGrid),
+    TResult data(List<Personage> personagesList, bool isGrid, bool isLoading,
+        int totalRecords),
     TResult initial(),
     TResult loading(),
     TResult failing(String message),
@@ -623,7 +692,7 @@ class _$DataPersonagesState implements DataPersonagesState {
   }) {
     assert(orElse != null);
     if (data != null) {
-      return data(personagesList, isGrid);
+      return data(personagesList, isGrid, isLoading, totalRecords);
     }
     return orElse();
   }
@@ -663,10 +732,14 @@ class _$DataPersonagesState implements DataPersonagesState {
 abstract class DataPersonagesState implements PersonagesState {
   const factory DataPersonagesState(
       {@required List<Personage> personagesList,
-      @required bool isGrid}) = _$DataPersonagesState;
+      @required bool isGrid,
+      @required bool isLoading,
+      @required int totalRecords}) = _$DataPersonagesState;
 
   List<Personage> get personagesList;
   bool get isGrid;
+  bool get isLoading;
+  int get totalRecords;
   @JsonKey(ignore: true)
   $DataPersonagesStateCopyWith<DataPersonagesState> get copyWith;
 }
@@ -710,7 +783,9 @@ class _$_InitialPersonagesState implements _InitialPersonagesState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<Personage> personagesList, bool isGrid),
+    @required
+        TResult data(List<Personage> personagesList, bool isGrid,
+            bool isLoading, int totalRecords),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult failing(String message),
@@ -725,7 +800,8 @@ class _$_InitialPersonagesState implements _InitialPersonagesState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<Personage> personagesList, bool isGrid),
+    TResult data(List<Personage> personagesList, bool isGrid, bool isLoading,
+        int totalRecords),
     TResult initial(),
     TResult loading(),
     TResult failing(String message),
@@ -813,7 +889,9 @@ class _$_LoadingPersonagesState implements _LoadingPersonagesState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<Personage> personagesList, bool isGrid),
+    @required
+        TResult data(List<Personage> personagesList, bool isGrid,
+            bool isLoading, int totalRecords),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult failing(String message),
@@ -828,7 +906,8 @@ class _$_LoadingPersonagesState implements _LoadingPersonagesState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<Personage> personagesList, bool isGrid),
+    TResult data(List<Personage> personagesList, bool isGrid, bool isLoading,
+        int totalRecords),
     TResult initial(),
     TResult loading(),
     TResult failing(String message),
@@ -940,7 +1019,9 @@ class _$_FailingPersonagesState implements _FailingPersonagesState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object>({
-    @required TResult data(List<Personage> personagesList, bool isGrid),
+    @required
+        TResult data(List<Personage> personagesList, bool isGrid,
+            bool isLoading, int totalRecords),
     @required TResult initial(),
     @required TResult loading(),
     @required TResult failing(String message),
@@ -955,7 +1036,8 @@ class _$_FailingPersonagesState implements _FailingPersonagesState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
-    TResult data(List<Personage> personagesList, bool isGrid),
+    TResult data(List<Personage> personagesList, bool isGrid, bool isLoading,
+        int totalRecords),
     TResult initial(),
     TResult loading(),
     TResult failing(String message),

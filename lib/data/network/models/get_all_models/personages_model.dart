@@ -9,6 +9,8 @@ String personagesModelToJson(PersonagesModel data) =>
 class PersonagesModel {
   PersonagesModel({
     this.totalRecords,
+    this.pages,
+    this.nextPage,
     this.succeeded,
     this.message,
     this.error,
@@ -16,6 +18,8 @@ class PersonagesModel {
   });
 
   final int totalRecords;
+  final int pages;
+  final int nextPage;
   final bool succeeded;
   final dynamic message;
   final dynamic error;
@@ -24,6 +28,8 @@ class PersonagesModel {
   factory PersonagesModel.fromJson(Map<String, dynamic> json) =>
       PersonagesModel(
         totalRecords: json["totalRecords"],
+        pages: json["pages"],
+        nextPage: json["nextPage"],
         succeeded: json["succeeded"],
         message: json["message"],
         error: json["error"],
@@ -32,6 +38,8 @@ class PersonagesModel {
 
   Map<String, dynamic> toJson() => {
         "totalRecords": totalRecords,
+        "pages": pages,
+        "nextPage": nextPage,
         "succeeded": succeeded,
         "message": message,
         "error": error,

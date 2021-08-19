@@ -9,6 +9,7 @@ import 'package:rick_and_morty/theme/color_theme.dart';
 class LocationsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    bool isLoading = false;
     return BlocBuilder<LocationsBloc, LocationsState>(
       builder: (context, state) {
         return state.maybeMap(
@@ -34,36 +35,55 @@ class LocationsScreen extends StatelessWidget {
                     vertical: 14,
                   ),
                   child: Text(
-                    'Всего локаций: ${_data.locationList.length.toString()}',
+                    'Всего локаций: ${_data.totalRecords}',
                     style: TextStyle(color: ColorPalette.gray),
                   ),
                 ),
               ),
             ),
-            body: _data.locationList.length != 0
-                ? Container(
-                    child: LocationsList(locationList: _data.locationList),
-                  )
-                : Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          Images.location,
-                          height: 135,
-                        ),
-                        SizedBox(
-                          height: 45,
-                        ),
-                        Text(
-                          'Локации с таким названием не найдено',
-                          style: Theme.of(context).textTheme.bodyText1,
-                        ),
-                      ],
+            body: NotificationListener<ScrollNotification>(
+              onNotification: (ScrollNotification scrollInfo) {
+                if (!isLoading &&
+                    scrollInfo.metrics.pixels ==
+                        scrollInfo.metrics.maxScrollExtent) {
+                  BlocProvider.of<LocationsBloc>(context)
+                      .add(LocationsEvent.initial(isLoading: !isLoading));
+                  isLoading = !_data.isLoading;
+                } 
+                if (isLoading && scrollInfo.metrics.pixels !=
+                    scrollInfo.metrics.maxScrollExtent) {
+                  isLoading = !isLoading;
+                }
+                return isLoading;
+              },
+              child: _data.locationList.length != 0
+                  ? Container(
+                      child:
+                          LocationsList(locationList: _data.locationList),
+                    )
+                  : Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Images.location.isNotEmpty
+                              ? Image.asset(
+                                  Images.location,
+                                  height: 135,
+                                )
+                              : Container(),
+                          SizedBox(
+                            height: 45,
+                          ),
+                          Text(
+                            'Локации с таким названием не найдено',
+                            style: Theme.of(context).textTheme.bodyText1,
+                          ),
+                        ],
+                      ),
                     ),
-                ),
+            ),
           ),
           orElse: () => SizedBox.shrink(),
         );

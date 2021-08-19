@@ -4,6 +4,8 @@ part of 'locations_bloc.dart';
 abstract class LocationsState with _$LocationsState {
   const factory LocationsState.data({
     @required final List<Location> locationList,
+    @required bool isLoading,
+    @required int totalRecords,
   }) = DataLocationsState;
 
   const factory LocationsState.initial() = _InitialLocationsState;

@@ -9,8 +9,8 @@ import 'network/server_api.dart';
 class Repository {
   final _serverApi = ServerApi();
 
-  Future<PersonagesModel> getPersonages() async {
-    final response = await _serverApi.getPersonages();
+  Future<PersonagesModel> getPersonages(int pageNumber, int pageSize) async {
+    final response = await _serverApi.getPersonages(pageNumber, pageSize);
     return response;
   }
 
@@ -19,8 +19,8 @@ class Repository {
     return response;
   }
 
-  Future<LocationsModel> getLocations() async {
-    final response = await _serverApi.getLocations();
+  Future<LocationsModel> getLocations(int pageNumber, int pageSize) async {
+    final response = await _serverApi.getLocations(pageNumber, pageSize);
     return response;
   }
 

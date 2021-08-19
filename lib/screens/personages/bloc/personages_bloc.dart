@@ -11,8 +11,12 @@ part 'personages_bloc.freezed.dart';
 
 class PersonagesBloc extends Bloc<PersonagesEvent, PersonagesState> {
   final _repository = Repository();
-  PersonagesModel personagesList;
+  PersonagesModel personagesItem;
+  List<Personage> personagesList;
   bool isGrid = false;
+  int pageNumber = 1;
+  int pageSize = 8;
+  bool isLoading = true;
 
   PersonagesBloc() : super(PersonagesState.initial());
 
@@ -27,12 +31,23 @@ class PersonagesBloc extends Bloc<PersonagesEvent, PersonagesState> {
 
   Stream<PersonagesState> _mapInitialPersonagesEvent(
       _InitialPersonagesEvent event) async* {
-    personagesList = await _repository.getPersonages();
+    personagesItem = await _repository.getPersonages(pageNumber, pageSize);
     yield PersonagesState.loading();
     try {
+      if (personagesList == null) {
+        personagesList = personagesItem.data;
+      } else {
+        personagesList.addAll(personagesItem.data);
+      }
+      pageNumber = personagesItem.nextPage;
+      if (personagesItem.data.isNotEmpty) {
+        isLoading = !event.isLoading;
+      }
       yield PersonagesState.data(
-        personagesList: personagesList.data,
+        personagesList: personagesList,
         isGrid: isGrid,
+        isLoading: isLoading,
+        totalRecords: personagesItem.totalRecords,
       );
     } catch (e) {
       yield PersonagesState.failing(message: e.toString());
@@ -44,19 +59,23 @@ class PersonagesBloc extends Bloc<PersonagesEvent, PersonagesState> {
     yield PersonagesState.loading();
     isGrid = !event.isGrid;
     yield PersonagesState.data(
-      personagesList: personagesList.data,
+      personagesList: personagesList,
       isGrid: isGrid,
+      isLoading: isLoading,
+      totalRecords: personagesItem.totalRecords,
     );
   }
 
   Stream<PersonagesState> _mapSearchNamePersonagesEvent(
       _SearchNamePersonagesEvent event) async* {
-    personagesList = await _repository.getPersonagesName(event.name);
+    personagesItem = await _repository.getPersonagesName(event.name);
     yield PersonagesState.loading();
     try {
       yield PersonagesState.data(
-        personagesList: personagesList.data,
+        personagesList: personagesItem.data,
         isGrid: isGrid,
+        isLoading: isLoading,
+        totalRecords: personagesItem.totalRecords,
       );
     } catch (e) {
       yield PersonagesState.failing(message: e.toString());

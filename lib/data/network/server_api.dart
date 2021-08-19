@@ -18,10 +18,10 @@ class ServerApi {
   DioSettings _dioSettings;
   Dio _dio;
 
-  Future<PersonagesModel> getPersonages() async {
+  Future<PersonagesModel> getPersonages(int pageNumber, int pageSize) async {
     Response<String> response = await _dio.get(
       "/api/Characters/GetAll",
-      queryParameters: {"PageNumber": 1, "PageSize": 100},
+      queryParameters: {"PageNumber": pageNumber, "PageSize": pageSize},
     );
     return personagesModelFromJson(response.toString());
   }
@@ -34,10 +34,10 @@ class ServerApi {
     return episodesModelFromJson(response.toString());
   }
 
-  Future<LocationsModel> getLocations() async {
+  Future<LocationsModel> getLocations(int pageNumber, int pageSize) async {
     Response<String> response = await _dio.get(
       "/api/Locations/GetAll",
-      queryParameters: {"PageNumber": 1, "PageSize": 100},
+      queryParameters: {"PageNumber": pageNumber, "PageSize": pageSize},
     );
     return locationsModelFromJson(response.toString());
   }
